@@ -24,14 +24,6 @@ const path         = require('path');
 const DATA_FILE = path.join(__dirname, '../data/tournaments.json');
 
 // ── Status constants ──────────────────────────────────────────────────────────
-const STATUS = {
-  PLANNED:     'planned',
-  IN_PROGRESS: 'in_progress',
-  FINISHED:    'finished',
-  UNKNOWN:     'unknown',
-};
-
-// Human-readable labels for notifications
 const STATUS_LABEL = {
   planned:     '📅 Planned',
   in_progress: '▶️ In Progress',
@@ -61,14 +53,9 @@ const STATUS_LABEL = {
 
       console.log(`  Status: ${result.status} | Players: ${result.participants.length}`);
 
-      // Detect change (treat null → any status as a change on first run)
       if (prevStatus !== result.status) {
         tournament.last_status = prevStatus;
-        changes.push({
-          tournament,
-          from: prevStatus,
-          to:   result.status,
-        });
+        changes.push({ tournament, from: prevStatus, to: result.status });
         console.log(`  ⚡ Status changed: ${prevStatus} → ${result.status}`);
       }
     } catch (err) {
@@ -78,11 +65,9 @@ const STATUS_LABEL = {
 
   await browser.close();
 
-  // Persist updated state
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
   console.log('\n✓ data/tournaments.json updated');
 
-  // Send notifications for any changes
   if (changes.length > 0 && process.env.SMTP_HOST) {
     await sendNotifications(changes, data.config.notify_email);
   } else if (changes.length > 0) {
@@ -96,113 +81,93 @@ const STATUS_LABEL = {
 async function scrapeTournament(browser, url) {
   const page = await browser.newPage();
 
-  // Block images/fonts to speed things up
   await page.route('**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf}', r => r.abort());
-
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
-
-  // BGA redirects to en.boardgamearena.com – wait for the JS app to boot
-  // The main content div varies; we wait for the body to be stable.
   await page.waitForTimeout(3000);
 
   const result = await page.evaluate(() => {
-    // ── Helpers ──────────────────────────────────────────────────────────────
-    const text = el => (el ? el.textContent.trim() : '');
-    const find = sel => document.querySelector(sel);
+    const text    = el => (el ? el.textContent.trim() : '');
+    const find    = sel => document.querySelector(sel);
     const findAll = sel => [...document.querySelectorAll(sel)];
 
-    // ── Tournament title ──────────────────────────────────────────────────────
-    const titleEl =
-      find('h1') ||
-      find('#tournament_name') ||
-      find('.tournament-name') ||
-      find('[class*="tournament"][class*="name"]');
-    const title = text(titleEl);
+    // ── Title ─────────────────────────────────────────────────────────────────
+    // BGA uses a large span for the tournament name, e.g.:
+    //   <span class="text-xl tablet:text-2xl leading-none truncate">TBA Around the World</span>
+    const titleEl = find('span.text-xl') || find('span[class*="text-xl"]');
+    const title   = text(titleEl);
 
     // ── Game name ─────────────────────────────────────────────────────────────
+    // Sits in a smaller sibling span, e.g.:
+    //   <span class="text-sm tablet:text-base leading-none truncate">Go Goa</span>
     const gameEl =
+      find('span.text-sm[class*="truncate"]') ||
+      find('span[class*="text-sm"][class*="truncate"]') ||
       find('.game_name') ||
-      find('#game_name') ||
-      find('[class*="game-name"]') ||
       find('a[href*="/gamepanel"]');
     const game_name = text(gameEl);
 
-    // ── Status detection ──────────────────────────────────────────────────────
-    // Strategy 1: look for explicit status elements
-    const statusEl =
-      find('#tournament_status') ||
-      find('.tournament_status') ||
-      find('[class*="tournamentstatus"]') ||
-      find('[id*="tournament_status"]') ||
-      find('[class*="statuslabel"]');
-
-    let rawStatus = text(statusEl).toLowerCase();
-
-    // Strategy 2: scan the whole page text for status keywords
-    if (!rawStatus) {
-      const bodyText = document.body.innerText.toLowerCase();
-      if (bodyText.includes('registration') || bodyText.includes('upcoming') ||
-          bodyText.includes('not started') || bodyText.includes('open for')) {
-        rawStatus = 'planned';
-      } else if (bodyText.includes('in progress') || bodyText.includes('ongoing') ||
-                 bodyText.includes('round ')) {
-        rawStatus = 'in_progress';
-      } else if (bodyText.includes('finished') || bodyText.includes('completed') ||
-                 bodyText.includes('winner')) {
-        rawStatus = 'finished';
-      }
-    }
-
-    // Map to canonical values
+    // ── Status ────────────────────────────────────────────────────────────────
+    const bodyText = document.body.innerText.toLowerCase();
     let status = 'unknown';
-    if (/planned|upcoming|registration|open|not.?started/.test(rawStatus)) {
+    // "Open" with a registration window → planned
+    if (/\bopen\b/.test(bodyText) && /\bstarts\b/.test(bodyText)) {
       status = 'planned';
-    } else if (/progress|ongoing|active|started|running|round/.test(rawStatus)) {
+    } else if (/\bin progress\b|\bongoing\b|\bround \d/.test(bodyText)) {
       status = 'in_progress';
-    } else if (/finish|complet|ended|over|done/.test(rawStatus)) {
+    } else if (/\bfinished\b|\bcompleted\b|\bfinal ranking\b|\bwinner\b/.test(bodyText)) {
       status = 'finished';
+    } else if (/\bregistration\b|\bnot started\b|\bupcoming\b/.test(bodyText)) {
+      status = 'planned';
     }
 
-    // ── Participants & rankings ───────────────────────────────────────────────
+    // ── Participants ──────────────────────────────────────────────────────────
     const participants = [];
+    const seen = new Set();
 
-    // Strategy A: ranked table rows (finished tournaments)
+    const addPlayer = (name, rank = null) => {
+      if (name && !seen.has(name)) { seen.add(name); participants.push({ rank, name }); }
+    };
+
+    // Strategy A: ranking table (finished tournaments)
     const rankRows = findAll(
-      '#ranking_block tr, .ranking_table tr, ' +
-      '[class*="ranking"] tr, table.ranking tr, ' +
-      '[id*="ranking"] tr'
-    ).filter(r => r.querySelector('td')); // skip header rows
+      '#ranking_block tr, .ranking_table tr, [class*="ranking"] tr, [id*="ranking"] tr'
+    ).filter(r => r.querySelector('td'));
 
     if (rankRows.length > 0) {
       rankRows.forEach((row, i) => {
         const cells = [...row.querySelectorAll('td')];
         if (cells.length < 2) return;
-
-        // Try to detect rank cell (first cell is usually the rank number)
-        const rankText = text(cells[0]).replace(/[^0-9]/g, '');
-        const rank = rankText ? parseInt(rankText, 10) : i + 1;
-
-        // Player name – look for a link or just second cell
-        const nameEl = row.querySelector('a[href*="/player"], a[href*="="]') || cells[1];
-        const name = text(nameEl);
-
-        if (name) participants.push({ rank, name });
+        const rankNum = parseInt(text(cells[0]).replace(/[^0-9]/g, ''), 10) || i + 1;
+        const nameEl  = row.querySelector('a[href*="/player"]') || cells[1];
+        addPlayer(text(nameEl), rankNum);
       });
     }
 
-    // Strategy B: player list (in_progress / planned tournaments)
+    // Strategy B: find the "Registered participants" heading, then grab only
+    // the player links that live inside the same containing block.
     if (participants.length === 0) {
-      const playerLinks = findAll(
-        '[class*="player"] a[href*="/player"], ' +
-        '[id*="players"] a[href*="/player"], ' +
-        'a[href*="/player?id="]'
-      );
-      playerLinks.forEach((a, i) => {
-        const name = text(a);
-        if (name && !participants.find(p => p.name === name)) {
-          participants.push({ rank: null, name });
+      let registeredSection = null;
+      for (const el of findAll('*')) {
+        if (
+          el.children.length === 0 &&
+          /registered participants/i.test(el.textContent.trim())
+        ) {
+          // Walk up until we find a sizeable container
+          registeredSection = el.closest('section, article, [class*="participant"], [class*="player"]')
+                           || el.parentElement?.parentElement
+                           || el.parentElement;
+          break;
         }
-      });
+      }
+      if (registeredSection) {
+        registeredSection.querySelectorAll('a[href*="/player"]').forEach(a => addPlayer(text(a)));
+      }
+    }
+
+    // Strategy C: elements explicitly classed as participant containers
+    if (participants.length === 0) {
+      findAll('[class*="participant"] a[href*="/player"], [id*="participant"] a[href*="/player"]')
+        .forEach(a => addPlayer(text(a)));
     }
 
     return { title, game_name, status, participants };
@@ -232,7 +197,6 @@ async function sendNotifications(changes, toEmail) {
   const htmlBody = changes.map(({ tournament, from, to }) => {
     const fromLabel = from ? STATUS_LABEL[from] : '(first check)';
     const toLabel   = STATUS_LABEL[to];
-    const url       = tournament.url;
 
     let rankingHtml = '';
     if (to === 'finished' && tournament.participants.length > 0) {
@@ -253,7 +217,7 @@ async function sendNotifications(changes, toEmail) {
         <h2 style="margin:0 0 8px;">${tournament.label}</h2>
         ${tournament.game_name ? `<p style="margin:0 0 8px;color:#666;">${tournament.game_name}</p>` : ''}
         <p><strong>Status:</strong> ${fromLabel} → <strong>${toLabel}</strong></p>
-        <p><a href="${url}">${url}</a></p>
+        <p><a href="${tournament.url}">${tournament.url}</a></p>
         ${rankingHtml}
       </div>`;
   }).join('');
@@ -265,7 +229,6 @@ async function sendNotifications(changes, toEmail) {
       </h1>
       ${htmlBody}
       <p style="color:#999;font-size:12px;margin-top:32px;">
-        Sent by your <a href="https://github.com">BGA Tournament Tracker</a>.
         Checked: ${new Date().toUTCString()}
       </p>
     </body></html>`;
