@@ -8,7 +8,7 @@
       "url": "https://boardgamearena.com/tournament?id=554868",
       "label": "My Planned Tournament",
       "last_status": null,
-      "last_checked": "2026-04-29T11:29:14.478Z",
+      "last_checked": "2026-04-29T12:40:34.280Z",
       "status": "planned",
       "participants": [
         {
@@ -20,6 +20,21 @@
           "rank": null,
           "name": "TacCOIG",
           "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": true
         }
       ],
       "game_name": "Go Goa",
@@ -30,7 +45,7 @@
       "url": "https://boardgamearena.com/tournament?id=538858",
       "label": "Tournament In Progress #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T11:29:20.176Z",
+      "last_checked": "2026-04-29T12:40:40.348Z",
       "status": "in_progress",
       "participants": [
         {
@@ -97,7 +112,7 @@
       "url": "https://boardgamearena.com/tournament?id=538885",
       "label": "Tournament In Progress #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T11:29:26.496Z",
+      "last_checked": "2026-04-29T12:40:46.952Z",
       "status": "in_progress",
       "participants": [
         {
@@ -164,81 +179,81 @@
       "url": "https://boardgamearena.com/tournament?id=518587",
       "label": "Finished Tournament #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T11:29:32.185Z",
+      "last_checked": "2026-04-29T12:40:52.816Z",
       "status": "finished",
       "participants": [
         {
-          "rank": null,
+          "rank": 1,
           "name": "VemRD",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 2,
           "name": "rakkamar",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 3,
           "name": "Kurorac",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 4,
           "name": "Zozoken",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 5,
           "name": "TacCOIG",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 5,
           "name": "beckmast",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 6,
           "name": "Cheery Dog",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 6,
           "name": "drharris",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 7,
           "name": "GeraldineMerida",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 7,
           "name": "Salvidrim",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 7,
           "name": "stopherjones",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 7,
           "name": "Sharon F",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 8,
           "name": "Arjo14",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 8,
           "name": "LaurieW917",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 8,
           "name": "Bleedingriver",
           "active": false
         }
@@ -251,76 +266,76 @@
       "url": "https://boardgamearena.com/tournament?id=518584",
       "label": "Finished Tournament #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T11:29:38.627Z",
+      "last_checked": "2026-04-29T12:40:59.573Z",
       "status": "finished",
       "participants": [
         {
-          "rank": null,
+          "rank": 1,
           "name": "Sharon F",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 2,
           "name": "LaurieW917",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 3,
           "name": "VemRD",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 3,
           "name": "Bleedingriver",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "rakkamar",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "Zozoken",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "Cheery Dog",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "stopherjones",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "TacCOIG",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "Arjo14",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "GeraldineMerida",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "Salvidrim",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "drharris",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 0,
           "name": "Kurorac",
           "active": false
         }
