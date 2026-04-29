@@ -8,7 +8,7 @@
       "url": "https://boardgamearena.com/tournament?id=554868",
       "label": "My Planned Tournament",
       "last_status": null,
-      "last_checked": "2026-04-29T13:36:45.572Z",
+      "last_checked": "2026-04-29T14:00:20.717Z",
       "status": "planned",
       "participants": [
         {
@@ -47,15 +47,15 @@
           "active": true
         }
       ],
-      "game_name": "Go Goa",
-      "title": "TBA Around the World"
+      "game_name": "TBA Around the World",
+      "title": "Go Goa"
     },
     {
       "id": "538858",
       "url": "https://boardgamearena.com/tournament?id=538858",
       "label": "Tournament In Progress #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:36:51.577Z",
+      "last_checked": "2026-04-29T14:00:26.703Z",
       "status": "in_progress",
       "participants": [
         {
@@ -114,15 +114,15 @@
           "active": false
         }
       ],
-      "game_name": "K2 - Pakistan",
-      "title": "TBA Around the World"
+      "game_name": "TBA Around the World",
+      "title": "K2 - Pakistan"
     },
     {
       "id": "538885",
       "url": "https://boardgamearena.com/tournament?id=538885",
       "label": "Tournament In Progress #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:36:58.285Z",
+      "last_checked": "2026-04-29T14:00:33.543Z",
       "status": "in_progress",
       "participants": [
         {
@@ -181,15 +181,15 @@
           "active": true
         }
       ],
-      "game_name": "Nanga Parbat",
-      "title": "TBA Around the World"
+      "game_name": "TBA Around the World",
+      "title": "Nanga Parbat"
     },
     {
       "id": "518587",
       "url": "https://boardgamearena.com/tournament?id=518587",
       "label": "Finished Tournament #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:37:04.291Z",
+      "last_checked": "2026-04-29T14:00:39.556Z",
       "status": "finished",
       "participants": [
         {
@@ -268,15 +268,15 @@
           "active": false
         }
       ],
-      "game_name": "Kingdomino",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Kingdomino"
     },
     {
       "id": "518584",
       "url": "https://boardgamearena.com/tournament?id=518584",
       "label": "Finished Tournament #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:37:10.998Z",
+      "last_checked": "2026-04-29T14:00:46.313Z",
       "status": "finished",
       "participants": [
         {
@@ -350,15 +350,15 @@
           "active": false
         }
       ],
-      "game_name": "Bubble Pop",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Bubble Pop"
     },
     {
       "id": "554870",
       "url": "https://boardgamearena.com/tournament?id=554870",
       "label": "Tournament 554870",
       "last_status": null,
-      "last_checked": "2026-04-29T13:37:16.960Z",
+      "last_checked": "2026-04-29T14:00:52.402Z",
       "status": "planned",
       "participants": [
         {
@@ -373,6 +373,11 @@
         },
         {
           "rank": null,
+          "name": "beckmast",
+          "active": true
+        },
+        {
+          "rank": null,
           "name": "Kurorac",
           "active": true
         },
@@ -397,15 +402,15 @@
           "active": true
         }
       ],
-      "game_name": "Jaipur",
-      "title": "TBA Around the World"
+      "game_name": "TBA Around the World",
+      "title": "Jaipur"
     },
     {
       "id": "538888",
       "url": "https://boardgamearena.com/tournament?id=538888",
       "label": "Tournament 538888",
       "last_status": null,
-      "last_checked": "2026-04-29T13:37:22.936Z",
+      "last_checked": "2026-04-29T14:00:58.461Z",
       "status": "in_progress",
       "participants": [
         {
@@ -474,15 +479,15 @@
           "active": false
         }
       ],
-      "game_name": "Trek12",
-      "title": "TBA Around the World"
+      "game_name": "TBA Around the World",
+      "title": "Trek12"
     },
     {
       "id": "528477",
       "url": "https://boardgamearena.com/tournament?id=528477",
       "label": "Tournament 528477",
       "last_status": null,
-      "last_checked": "2026-04-29T13:37:28.943Z",
+      "last_checked": "2026-04-29T14:01:04.500Z",
       "status": "in_progress",
       "participants": [
         {
@@ -541,15 +546,15 @@
           "active": false
         }
       ],
-      "game_name": "Assyria",
-      "title": "TBA Around the World"
+      "game_name": "TBA Around the World",
+      "title": "Assyria"
     },
     {
       "id": "528478",
       "url": "https://boardgamearena.com/tournament?id=528478",
       "label": "Tournament 528478",
       "last_status": null,
-      "last_checked": "2026-04-29T13:37:34.923Z",
+      "last_checked": "2026-04-29T14:01:10.519Z",
       "status": "in_progress",
       "participants": [
         {
@@ -608,15 +613,15 @@
           "active": false
         }
       ],
-      "game_name": "Tigris and Euphrates",
-      "title": "TBA Around the World"
+      "game_name": "TBA Around the World",
+      "title": "Tigris and Euphrates"
     },
     {
       "id": "518549",
       "url": "https://boardgamearena.com/tournament?id=518549",
       "label": "Tournament 518549",
       "last_status": null,
-      "last_checked": "2026-04-29T13:37:41.023Z",
+      "last_checked": "2026-04-29T14:01:16.584Z",
       "status": "in_progress",
       "participants": [
         {
@@ -690,15 +695,15 @@
           "active": false
         }
       ],
-      "game_name": "Formula D",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Formula D"
     },
     {
       "id": "518574",
       "url": "https://boardgamearena.com/tournament?id=518574",
       "label": "Tournament 518574",
       "last_status": null,
-      "last_checked": "2026-04-29T13:37:47.636Z",
+      "last_checked": "2026-04-29T14:01:23.296Z",
       "status": "in_progress",
       "participants": [
         {
@@ -782,15 +787,15 @@
           "active": true
         }
       ],
-      "game_name": "Jaipur",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Jaipur"
     },
     {
       "id": "518581",
       "url": "https://boardgamearena.com/tournament?id=518581",
       "label": "Tournament 518581",
       "last_status": null,
-      "last_checked": "2026-04-29T13:37:54.245Z",
+      "last_checked": "2026-04-29T14:01:30.002Z",
       "status": "in_progress",
       "participants": [
         {
@@ -869,15 +874,15 @@
           "active": false
         }
       ],
-      "game_name": "Golf",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Golf"
     },
     {
       "id": "518544",
       "url": "https://boardgamearena.com/tournament?id=518544",
       "label": "Tournament 518544",
       "last_status": null,
-      "last_checked": "2026-04-29T13:38:00.265Z",
+      "last_checked": "2026-04-29T14:01:36.057Z",
       "status": "finished",
       "participants": [
         {
@@ -961,15 +966,15 @@
           "active": false
         }
       ],
-      "game_name": "Cities",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Cities"
     },
     {
       "id": "518569",
       "url": "https://boardgamearena.com/tournament?id=518569",
       "label": "Tournament 518569",
       "last_status": null,
-      "last_checked": "2026-04-29T13:38:06.227Z",
+      "last_checked": "2026-04-29T14:01:42.219Z",
       "status": "finished",
       "participants": [
         {
@@ -1053,15 +1058,15 @@
           "active": false
         }
       ],
-      "game_name": "Number Drop",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Number Drop"
     },
     {
       "id": "518571",
       "url": "https://boardgamearena.com/tournament?id=518571",
       "label": "Tournament 518571",
       "last_status": null,
-      "last_checked": "2026-04-29T13:38:12.261Z",
+      "last_checked": "2026-04-29T14:01:48.282Z",
       "status": "finished",
       "participants": [
         {
@@ -1150,15 +1155,15 @@
           "active": false
         }
       ],
-      "game_name": "Setup",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Setup"
     },
     {
       "id": "518551",
       "url": "https://boardgamearena.com/tournament?id=518551",
       "label": "Tournament 518551",
       "last_status": null,
-      "last_checked": "2026-04-29T13:38:18.313Z",
+      "last_checked": "2026-04-29T14:01:54.356Z",
       "status": "in_progress",
       "participants": [
         {
@@ -1247,15 +1252,15 @@
           "active": false
         }
       ],
-      "game_name": "Sushi Go",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Sushi Go"
     },
     {
       "id": "518577",
       "url": "https://boardgamearena.com/tournament?id=518577",
       "label": "Tournament 518577",
       "last_status": null,
-      "last_checked": "2026-04-29T13:38:24.188Z",
+      "last_checked": "2026-04-29T14:02:00.328Z",
       "status": "finished",
       "participants": [
         {
@@ -1334,8 +1339,8 @@
           "active": false
         }
       ],
-      "game_name": "Draftosaurus",
-      "title": "TBA Seasonal 2026-1"
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Draftosaurus"
     }
   ]
 }
