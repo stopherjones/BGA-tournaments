@@ -3,16 +3,6 @@
  *
  * Scrapes each BGA tournament page, detects status changes, and sends
  * email notifications. Runs via GitHub Actions on a schedule.
- *
- * Required GitHub Secrets:
- *   NOTIFY_EMAIL     – address to receive alerts
- *   SMTP_HOST        – e.g. smtp.gmail.com
- *   SMTP_PORT        – e.g. 587
- *   SMTP_USER        – your Gmail address
- *   SMTP_PASS        – your Gmail App Password (not your login password!)
- *
- * To generate a Gmail App Password:
- *   https://myaccount.google.com/apppasswords
  */
 
 const { chromium } = require('playwright');
@@ -32,12 +22,6 @@ const STATUS_LABEL = {
   unknown:     '❓ Unknown',
 };
 
-// ── Manual overrides ──────────────────────────────────────────────────────────
-// With the seed list cleaned up (only "normal" tournaments), we use the default
-// mapping from the BGA page:
-// - `title`     = tournament/event name (large header)
-// - `game_name` = game name  (smaller subheader)
-
 // ── Main ──────────────────────────────────────────────────────────────────────
 (async () => {
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
@@ -48,7 +32,7 @@ const STATUS_LABEL = {
   console.log('Browser launched');
 
   for (const tournament of data.tournaments) {
-    const displayName = tournament.game_name || tournament.title || tournament.label || `Tournament ${tournament.id}`;
+    const displayName = tournament.game_name || tournament.title || `Tournament ${tournament.id}`;
     console.log(`\n── Checking: ${displayName} (id ${tournament.id})`);
     try {
       const result = await scrapeTournament(browser, tournament.url);
@@ -93,11 +77,6 @@ function mergeSeedsIntoData(data) {
   if (!data || typeof data !== 'object') throw new Error('Invalid tournaments.json');
   if (!Array.isArray(data.tournaments)) data.tournaments = [];
 
-  // If seeds exist, treat them as the source of truth for what we track.
-  // Remove any tournaments from tournaments.json that are not present in seeds.
-  const seedIds = new Set(seeds.map(s => String(s.id)));
-  data.tournaments = data.tournaments.filter(t => seedIds.has(String(t.id)));
-
   const byId = new Map(data.tournaments.map(t => [String(t.id), t]));
 
   for (const seed of seeds) {
@@ -116,12 +95,11 @@ function mergeSeedsIntoData(data) {
       };
       data.tournaments.push(t);
       byId.set(id, t);
-      continue;
+    } else {
+      if (!existing.url) existing.url = url;
     }
-
-    // Backfill / sync fields without clobbering cached scrape state
-    if (!existing.url) existing.url = url;
   }
+  // Logic to filter/delete tournaments missing from seeds was removed to preserve history.
 }
 
 function loadSeeds() {
@@ -139,14 +117,10 @@ function loadSeeds() {
     }
     if (item && typeof item === 'object') {
       const parsed = parseIdOrUrl(item.url || item.id);
-      if (!parsed) continue;
-      seeds.push({
-        ...parsed,
-      });
+      if (parsed) seeds.push(parsed);
     }
   }
 
-  // Dedupe by id (preserve first label encountered)
   const byId = new Map();
   for (const s of seeds) {
     if (!byId.has(s.id)) byId.set(s.id, s);
@@ -157,30 +131,18 @@ function loadSeeds() {
 function parseIdOrUrl(input) {
   const str = String(input || '').trim();
   if (!str) return null;
-
-  // ID only
   if (/^\d+$/.test(str)) {
     return { id: str, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(str)}` };
   }
-
-  // URL (try to extract ?id=123)
   try {
     const u = new URL(str);
     const id = u.searchParams.get('id');
     if (id && /^\d+$/.test(id)) {
       return { id, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(id)}` };
     }
-  } catch {
-    // ignore
-  }
-
-  // Fallback: look for id=123 anywhere
+  } catch {}
   const m = str.match(/(?:\?|&)id=(\d+)/);
-  if (m) {
-    const id = m[1];
-    return { id, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(id)}` };
-  }
-
+  if (m) return { id: m[1], url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(m[1])}` };
   return null;
 }
 
@@ -192,28 +154,31 @@ async function scrapeTournament(browser, url) {
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
   await page.waitForTimeout(3000);
 
-  const result = await page.evaluate(() => {
+  const result = await page.evaluate((currentUrl) => {
     const text    = el => (el ? el.textContent.trim() : '');
     const find    = sel => document.querySelector(sel);
     const findAll = sel => [...document.querySelectorAll(sel)];
 
-    // ── Title ─────────────────────────────────────────────────────────────────
-    // Mapping the smaller subheader (text-sm) to the Title
-    const titleEl = find('span.text-sm.truncate') || find('span[class*="text-sm"]');
-    const title   = text(titleEl);
+    // ── The Exception List ──────────────────────────────────────────────────
+    const swapIds = ["554870", "554868", "538858", "538885", "538888"];
+    const needsSwap = swapIds.some(id => currentUrl.includes(`id=${id}`));
 
-    // ── Game name ─────────────────────────────────────────────────────────────
-    // Mapping the larger main header (text-xl) to the Game Name
-    const gameEl = 
-      find('span.text-xl.truncate') || 
-      find('span[class*="text-xl"]') ||
-      find('.game_name');
-    const game_name = text(gameEl);
+    // ── Capture the elements ────────────────────────────────────────────────
+    const smallText = text(find('span.text-sm.truncate') || find('span[class*="text-sm"]'));
+    const largeText = text(find('span.text-xl.truncate') || find('span[class*="text-xl"]'));
+
+    let title, game_name;
+    if (needsSwap) {
+      title     = largeText;
+      game_name = smallText;
+    } else {
+      title     = smallText;
+      game_name = largeText;
+    }
 
     // ── Status ────────────────────────────────────────────────────────────────
     const bodyText = document.body.innerText.toLowerCase();
     let status = 'unknown';
-    // "Open" with a registration window → planned
     if (/\bopen\b/.test(bodyText) && /\bstarts\b/.test(bodyText)) {
       status = 'planned';
     } else if (/\bin progress\b|\bongoing\b|\bround \d/.test(bodyText)) {
@@ -225,16 +190,8 @@ async function scrapeTournament(browser, url) {
     }
 
     // ── Participants ──────────────────────────────────────────────────────────
-    // BGA renders every player name as: <span class="... playername ...">username</span>
-    // Consistent across planned, in-progress, and finished tournaments.
-    //
-    // For finished tournaments, rank is stored in data-rank-start on the
-    // container div, e.g.: <div data-rank-start="1">...<span class="playername">VemRD</span>
-    // Multiple players in the same container share that rank (tied places).
     const participants = [];
     const seen = new Set();
-
-    // Strategy A: rank containers (finished tournaments)
     const rankContainers = findAll('[data-rank-start]');
     if (rankContainers.length > 0) {
       rankContainers.forEach(container => {
@@ -243,25 +200,22 @@ async function scrapeTournament(browser, url) {
           const name = el.textContent.trim();
           if (!name || seen.has(name)) return;
           seen.add(name);
-          const isEliminated = el.className.includes('line-through');
-          participants.push({ rank, name, active: !isEliminated });
+          participants.push({ rank, name, active: !el.className.includes('line-through') });
         });
       });
     }
 
-    // Strategy B: no rank containers (planned / in-progress) — just list players
     if (participants.length === 0) {
       findAll('span.playername').forEach(el => {
         const name = el.textContent.trim();
         if (!name || seen.has(name)) return;
         seen.add(name);
-        const isEliminated = el.className.includes('line-through');
-        participants.push({ rank: null, name, active: !isEliminated });
+        participants.push({ rank: null, name, active: !el.className.includes('line-through') });
       });
     }
 
     return { title, game_name, status, participants };
-  });
+  }, url);
 
   await page.close();
   return result;
@@ -281,7 +235,7 @@ async function sendNotifications(changes, toEmail) {
 
   const subject =
     changes.length === 1
-      ? `BGA Tournament Update: "${changes[0].tournament.label}" is now ${STATUS_LABEL[changes[0].to]}`
+      ? `BGA Tournament Update: "${changes[0].tournament.game_name || changes[0].tournament.title}" is now ${STATUS_LABEL[changes[0].to]}`
       : `BGA Tournament Updates: ${changes.length} tournaments changed status`;
 
   const htmlBody = changes.map(({ tournament, from, to }) => {
@@ -304,7 +258,7 @@ async function sendNotifications(changes, toEmail) {
 
     return `
       <div style="margin-bottom:32px;padding:16px;border:1px solid #ddd;border-radius:8px;">
-        <h2 style="margin:0 0 8px;">${tournament.label}</h2>
+        <h2 style="margin:0 0 8px;">${tournament.title}</h2>
         ${tournament.game_name ? `<p style="margin:0 0 8px;color:#666;">${tournament.game_name}</p>` : ''}
         <p><strong>Status:</strong> ${fromLabel} → <strong>${toLabel}</strong></p>
         <p><a href="${tournament.url}">${tournament.url}</a></p>
