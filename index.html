@@ -338,15 +338,13 @@
         <div class="card-header">
           <div style="flex:1">
             <div class="card-title">${escHtml(t.game_name || 'Tournament ' + t.id)}</div>
-            ${t.title ? `<div class="card-game">🎮 ${escHtml(t.title)}</div>` : ''}
+            ${t.title ? `<div class="card-game"> ${escHtml(t.title)}</div>` : ''}
           </div>
           <span class="status-pill status-${status}">${icon} ${label}</span>
         </div>
 
         <div class="card-meta">
-          <span>🆔 ID: ${t.id}</span>
           ${t.participants?.length ? `<span>👥 ${t.participants.length} player${t.participants.length !== 1 ? 's' : ''}</span>` : ''}
-          <span>🕐 Checked: ${checked}</span>
         </div>
 
         ${rankingSection}
