@@ -25,24 +25,16 @@ Push this folder as a new GitHub repository.
 
 ### 2. Add your tournaments
 
-Edit `data/tournaments.json` and replace the example entries with your tournament IDs.
-Find the ID in the BGA URL: `boardgamearena.com/tournament?id=`**`XXXXXX`**
+Edit `data/seeds.json` and add tournament IDs or full BGA tournament URLs.
+Find the ID in the BGA URL: `boardgamearena.com/tournament?id=`**`XXXXXX`**.
+On each run, the scraper will merge seeds into `data/tournaments.json` and populate/update the other properties automatically.
 
 ```json
 {
-  "config": {
-    "notify_email": "you@example.com"
-  },
   "tournaments": [
-    {
-      "id": "123456",
-      "url": "https://boardgamearena.com/tournament?id=123456",
-      "label": "My Sunday Catan League",
-      "last_status": null,
-      "last_checked": null,
-      "status": null,
-      "participants": []
-    }
+    "123456",
+    "https://boardgamearena.com/tournament?id=654321",
+    { "id": "777777", "label": "My Sunday Catan League" }
   ]
 }
 ```

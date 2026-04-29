@@ -66,6 +66,20 @@
     .filter-btn:hover { border-color: var(--accent); color: var(--text); }
     .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
 
+    .filter-select {
+      padding: 6px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: border-color .15s;
+      min-width: 220px;
+    }
+    .filter-select:hover { border-color: var(--accent); }
+    .filter-select:focus { outline: none; border-color: var(--accent); }
+
     /* ── Cards ── */
     .cards { display: grid; gap: 20px; }
 
@@ -203,6 +217,9 @@
     <button class="filter-btn" data-filter="planned">📅 Planned</button>
     <button class="filter-btn" data-filter="in_progress">▶️ In Progress</button>
     <button class="filter-btn" data-filter="finished">🏆 Finished</button>
+    <select id="title-filter" class="filter-select" aria-label="Filter by tournament title">
+      <option value="">All titles</option>
+    </select>
   </div>
 
   <div class="cards" id="cards">
@@ -230,6 +247,7 @@
 
   let allTournaments = [];
   let currentFilter = 'all';
+  let currentTitle = '';
 
   // ── Fetch data ──────────────────────────────────────────────────────────────
   fetch('data/tournaments.json?_=' + Date.now())
@@ -248,6 +266,7 @@
           `Last checked<br>${d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}`;
       }
 
+      initTitleFilter();
       render();
     })
     .catch(err => {
@@ -257,9 +276,11 @@
 
   // ── Render ──────────────────────────────────────────────────────────────────
   function render() {
-    const filtered = currentFilter === 'all'
-      ? allTournaments
-      : allTournaments.filter(t => t.status === currentFilter);
+    const filtered = allTournaments.filter(t => {
+      const statusOk = currentFilter === 'all' ? true : t.status === currentFilter;
+      const titleOk = !currentTitle ? true : (t.title || '') === currentTitle;
+      return statusOk && titleOk;
+    });
 
     const container = document.getElementById('cards');
 
@@ -346,6 +367,29 @@
     });
   });
 
+  // ── Title dropdown ──────────────────────────────────────────────────────────
+  function initTitleFilter() {
+    const select = document.getElementById('title-filter');
+    if (!select) return;
+
+    const titles = Array.from(new Set(
+      allTournaments
+        .map(t => (t.title || '').trim())
+        .filter(Boolean)
+    )).sort((a, b) => a.localeCompare(b));
+
+    select.innerHTML = [
+      '<option value="">All titles</option>',
+      ...titles.map(t => `<option value="${escAttr(t)}">${escHtml(t)}</option>`)
+    ].join('');
+
+    select.value = currentTitle;
+    select.addEventListener('change', () => {
+      currentTitle = select.value;
+      render();
+    });
+  }
+
   // ── Utils ───────────────────────────────────────────────────────────────────
   function escHtml(str) {
     if (!str) return '';
@@ -354,6 +398,11 @@
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  function escAttr(str) {
+    // For attribute values (we still escape HTML entities for safety)
+    return escHtml(str).replace(/'/g, '&#39;');
   }
 </script>
 </body>

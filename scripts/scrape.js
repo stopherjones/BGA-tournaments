@@ -22,6 +22,7 @@ const path         = require('path');
 
 // ── Paths ─────────────────────────────────────────────────────────────────────
 const DATA_FILE = path.join(__dirname, '../data/tournaments.json');
+const SEEDS_FILE = path.join(__dirname, '../data/seeds.json');
 
 // ── Status constants ──────────────────────────────────────────────────────────
 const STATUS_LABEL = {
@@ -34,6 +35,7 @@ const STATUS_LABEL = {
 // ── Main ──────────────────────────────────────────────────────────────────────
 (async () => {
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
+  mergeSeedsIntoData(data);
   const changes = [];
 
   const browser = await chromium.launch({ headless: true });
@@ -76,6 +78,102 @@ const STATUS_LABEL = {
     console.log('\nNo status changes detected.');
   }
 })();
+
+function mergeSeedsIntoData(data) {
+  const seeds = loadSeeds();
+  if (!seeds || seeds.length === 0) return;
+
+  if (!data || typeof data !== 'object') throw new Error('Invalid tournaments.json');
+  if (!Array.isArray(data.tournaments)) data.tournaments = [];
+
+  const byId = new Map(data.tournaments.map(t => [String(t.id), t]));
+
+  for (const seed of seeds) {
+    const id = String(seed.id);
+    const url = seed.url || `https://boardgamearena.com/tournament?id=${encodeURIComponent(id)}`;
+    const existing = byId.get(id);
+
+    if (!existing) {
+      const t = {
+        id,
+        url,
+        label: seed.label || `Tournament ${id}`,
+        last_status: null,
+        last_checked: null,
+        status: null,
+        participants: [],
+      };
+      data.tournaments.push(t);
+      byId.set(id, t);
+      continue;
+    }
+
+    // Backfill / sync fields without clobbering cached scrape state
+    if (!existing.url) existing.url = url;
+    if (seed.label && (!existing.label || existing.label.startsWith('Tournament '))) existing.label = seed.label;
+  }
+}
+
+function loadSeeds() {
+  if (!fs.existsSync(SEEDS_FILE)) return null;
+  const raw = JSON.parse(fs.readFileSync(SEEDS_FILE, 'utf8'));
+  const list = Array.isArray(raw) ? raw : raw?.tournaments;
+  if (!Array.isArray(list)) return null;
+
+  const seeds = [];
+  for (const item of list) {
+    if (typeof item === 'string') {
+      const parsed = parseIdOrUrl(item);
+      if (parsed) seeds.push(parsed);
+      continue;
+    }
+    if (item && typeof item === 'object') {
+      const parsed = parseIdOrUrl(item.url || item.id);
+      if (!parsed) continue;
+      seeds.push({
+        ...parsed,
+        label: typeof item.label === 'string' && item.label.trim() ? item.label.trim() : undefined,
+      });
+    }
+  }
+
+  // Dedupe by id (preserve first label encountered)
+  const byId = new Map();
+  for (const s of seeds) {
+    if (!byId.has(s.id)) byId.set(s.id, s);
+  }
+  return [...byId.values()];
+}
+
+function parseIdOrUrl(input) {
+  const str = String(input || '').trim();
+  if (!str) return null;
+
+  // ID only
+  if (/^\d+$/.test(str)) {
+    return { id: str, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(str)}` };
+  }
+
+  // URL (try to extract ?id=123)
+  try {
+    const u = new URL(str);
+    const id = u.searchParams.get('id');
+    if (id && /^\d+$/.test(id)) {
+      return { id, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(id)}` };
+    }
+  } catch {
+    // ignore
+  }
+
+  // Fallback: look for id=123 anywhere
+  const m = str.match(/(?:\?|&)id=(\d+)/);
+  if (m) {
+    const id = m[1];
+    return { id, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(id)}` };
+  }
+
+  return null;
+}
 
 // ── Scraper ───────────────────────────────────────────────────────────────────
 async function scrapeTournament(browser, url) {
