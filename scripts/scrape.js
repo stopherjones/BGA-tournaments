@@ -33,20 +33,10 @@ const STATUS_LABEL = {
 };
 
 // ── Manual overrides ──────────────────────────────────────────────────────────
-// The BGA page fields we scrape appear inverted relative to our desired schema.
-// By default we swap them so our JSON is consistent:
-// - `title`     = event name (e.g. "TBA Around the World")
-// - `game_name` = game name  (e.g. "Trek12")
-//
-// Some tournaments were configured "wrong way round" on BGA, and for those the
-// default swap would make them incorrect. So we *do not* swap for these IDs.
-const DONT_SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
-  '554868',
-  '538858',
-  '538885',
-  '554870',
-  '538888',
-]);
+// With the seed list cleaned up (only "normal" tournaments), we use the default
+// mapping from the BGA page:
+// - `title`     = tournament/event name (large header)
+// - `game_name` = game name  (smaller subheader)
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 (async () => {
@@ -62,21 +52,20 @@ const DONT_SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
     console.log(`\n── Checking: ${displayName} (id ${tournament.id})`);
     try {
       const result = await scrapeTournament(browser, tournament.url);
-      const normalized = normalizeScrapeResult(tournament, result);
       const prevStatus = tournament.status;
 
-      tournament.status       = normalized.status;
-      tournament.participants = normalized.participants;
-      tournament.game_name    = normalized.game_name || tournament.game_name;
-      tournament.title        = normalized.title     || tournament.title;
+      tournament.status       = result.status;
+      tournament.participants = result.participants;
+      tournament.game_name    = result.game_name || tournament.game_name;
+      tournament.title        = result.title     || tournament.title;
       tournament.last_checked = new Date().toISOString();
 
-      console.log(`  Status: ${normalized.status} | Players: ${normalized.participants.length}`);
+      console.log(`  Status: ${result.status} | Players: ${result.participants.length}`);
 
-      if (prevStatus !== normalized.status) {
+      if (prevStatus !== result.status) {
         tournament.last_status = prevStatus;
-        changes.push({ tournament, from: prevStatus, to: normalized.status });
-        console.log(`  ⚡ Status changed: ${prevStatus} → ${normalized.status}`);
+        changes.push({ tournament, from: prevStatus, to: result.status });
+        console.log(`  ⚡ Status changed: ${prevStatus} → ${result.status}`);
       }
     } catch (err) {
       console.error(`  ✗ Error scraping ${tournament.url}:`, err.message);
@@ -97,18 +86,17 @@ const DONT_SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
   }
 })();
 
-function normalizeScrapeResult(tournament, result) {
-  const id = String(tournament?.id ?? '');
-  if (DONT_SWAP_TITLE_AND_GAME_FOR_IDS.has(id)) return result;
-  return { ...result, title: result.game_name, game_name: result.title };
-}
-
 function mergeSeedsIntoData(data) {
   const seeds = loadSeeds();
   if (!seeds || seeds.length === 0) return;
 
   if (!data || typeof data !== 'object') throw new Error('Invalid tournaments.json');
   if (!Array.isArray(data.tournaments)) data.tournaments = [];
+
+  // If seeds exist, treat them as the source of truth for what we track.
+  // Remove any tournaments from tournaments.json that are not present in seeds.
+  const seedIds = new Set(seeds.map(s => String(s.id)));
+  data.tournaments = data.tournaments.filter(t => seedIds.has(String(t.id)));
 
   const byId = new Map(data.tournaments.map(t => [String(t.id), t]));
 
