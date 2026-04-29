@@ -121,54 +121,28 @@ async function scrapeTournament(browser, url) {
     }
 
     // ── Participants ──────────────────────────────────────────────────────────
+    // BGA renders every player name as: <span class="... playername ...">username</span>
+    // Consistent across planned, in-progress, and finished tournaments.
     const participants = [];
     const seen = new Set();
 
-    const addPlayer = (name, rank = null) => {
-      if (name && !seen.has(name)) { seen.add(name); participants.push({ rank, name }); }
-    };
+    findAll('span.playername').forEach(el => {
+      const name = (el ? el.textContent.trim() : '');
+      if (!name || seen.has(name)) return;
+      seen.add(name);
+      const isEliminated = el.className.includes('line-through');
+      participants.push({ rank: null, name, active: !isEliminated });
+    });
 
-    // Strategy A: ranking table (finished tournaments)
-    const rankRows = findAll(
-      '#ranking_block tr, .ranking_table tr, [class*="ranking"] tr, [id*="ranking"] tr'
-    ).filter(r => r.querySelector('td'));
-
-    if (rankRows.length > 0) {
-      rankRows.forEach((row, i) => {
-        const cells = [...row.querySelectorAll('td')];
-        if (cells.length < 2) return;
-        const rankNum = parseInt(text(cells[0]).replace(/[^0-9]/g, ''), 10) || i + 1;
-        const nameEl  = row.querySelector('a[href*="/player"]') || cells[1];
-        addPlayer(text(nameEl), rankNum);
-      });
-    }
-
-    // Strategy B: find the "Registered participants" heading, then grab only
-    // the player links that live inside the same containing block.
-    if (participants.length === 0) {
-      let registeredSection = null;
-      for (const el of findAll('*')) {
-        if (
-          el.children.length === 0 &&
-          /registered participants/i.test(el.textContent.trim())
-        ) {
-          // Walk up until we find a sizeable container
-          registeredSection = el.closest('section, article, [class*="participant"], [class*="player"]')
-                           || el.parentElement?.parentElement
-                           || el.parentElement;
-          break;
-        }
-      }
-      if (registeredSection) {
-        registeredSection.querySelectorAll('a[href*="/player"]').forEach(a => addPlayer(text(a)));
-      }
-    }
-
-    // Strategy C: elements explicitly classed as participant containers
-    if (participants.length === 0) {
-      findAll('[class*="participant"] a[href*="/player"], [id*="participant"] a[href*="/player"]')
-        .forEach(a => addPlayer(text(a)));
-    }
+    // For finished tournaments, try to read rank numbers adjacent to each player.
+    participants.forEach(p => {
+      const el = [...document.querySelectorAll('span.playername')].find(e => e.textContent.trim() === p.name);
+      if (!el) return;
+      const row = el.closest('tr, li, [class*="row"]');
+      if (!row) return;
+      const m = row.textContent.trim().match(/^(\d+)/);
+      if (m) p.rank = parseInt(m[1], 10);
+    });
 
     return { title, game_name, status, participants };
   });
