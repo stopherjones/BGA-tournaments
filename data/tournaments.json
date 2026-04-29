@@ -8,9 +8,14 @@
       "url": "https://boardgamearena.com/tournament?id=554868",
       "label": "My Planned Tournament",
       "last_status": null,
-      "last_checked": "2026-04-29T13:05:32.626Z",
+      "last_checked": "2026-04-29T13:36:45.572Z",
       "status": "planned",
       "participants": [
+        {
+          "rank": null,
+          "name": "Arjo14",
+          "active": true
+        },
         {
           "rank": null,
           "name": "stopherjones",
@@ -50,7 +55,7 @@
       "url": "https://boardgamearena.com/tournament?id=538858",
       "label": "Tournament In Progress #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:05:39.039Z",
+      "last_checked": "2026-04-29T13:36:51.577Z",
       "status": "in_progress",
       "participants": [
         {
@@ -117,7 +122,7 @@
       "url": "https://boardgamearena.com/tournament?id=538885",
       "label": "Tournament In Progress #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:05:45.778Z",
+      "last_checked": "2026-04-29T13:36:58.285Z",
       "status": "in_progress",
       "participants": [
         {
@@ -184,7 +189,7 @@
       "url": "https://boardgamearena.com/tournament?id=518587",
       "label": "Finished Tournament #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:05:51.924Z",
+      "last_checked": "2026-04-29T13:37:04.291Z",
       "status": "finished",
       "participants": [
         {
@@ -271,7 +276,7 @@
       "url": "https://boardgamearena.com/tournament?id=518584",
       "label": "Finished Tournament #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T13:05:58.876Z",
+      "last_checked": "2026-04-29T13:37:10.998Z",
       "status": "finished",
       "participants": [
         {
@@ -353,7 +358,7 @@
       "url": "https://boardgamearena.com/tournament?id=554870",
       "label": "Tournament 554870",
       "last_status": null,
-      "last_checked": "2026-04-29T13:06:05.354Z",
+      "last_checked": "2026-04-29T13:37:16.960Z",
       "status": "planned",
       "participants": [
         {
@@ -385,6 +390,11 @@
           "rank": null,
           "name": "Salvidrim",
           "active": true
+        },
+        {
+          "rank": null,
+          "name": "Arjo14",
+          "active": true
         }
       ],
       "game_name": "Jaipur",
@@ -395,7 +405,7 @@
       "url": "https://boardgamearena.com/tournament?id=538888",
       "label": "Tournament 538888",
       "last_status": null,
-      "last_checked": "2026-04-29T13:06:11.769Z",
+      "last_checked": "2026-04-29T13:37:22.936Z",
       "status": "in_progress",
       "participants": [
         {
@@ -472,7 +482,7 @@
       "url": "https://boardgamearena.com/tournament?id=528477",
       "label": "Tournament 528477",
       "last_status": null,
-      "last_checked": "2026-04-29T13:06:18.184Z",
+      "last_checked": "2026-04-29T13:37:28.943Z",
       "status": "in_progress",
       "participants": [
         {
@@ -539,7 +549,7 @@
       "url": "https://boardgamearena.com/tournament?id=528478",
       "label": "Tournament 528478",
       "last_status": null,
-      "last_checked": "2026-04-29T13:06:24.611Z",
+      "last_checked": "2026-04-29T13:37:34.923Z",
       "status": "in_progress",
       "participants": [
         {
@@ -600,6 +610,732 @@
       ],
       "game_name": "TBA Around the World",
       "title": "Tigris and Euphrates"
+    },
+    {
+      "id": "518549",
+      "url": "https://boardgamearena.com/tournament?id=518549",
+      "label": "Tournament 518549",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:37:41.023Z",
+      "status": "in_progress",
+      "participants": [
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "rakkamar",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Bleedingriver",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "LaurieW917",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "GeraldineMerida",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Zozoken",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "zach315",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Arjo14",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Formula D"
+    },
+    {
+      "id": "518574",
+      "url": "https://boardgamearena.com/tournament?id=518574",
+      "label": "Tournament 518574",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:37:47.636Z",
+      "status": "in_progress",
+      "participants": [
+        {
+          "rank": null,
+          "name": "rakkamar",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Sharon F",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Bleedingriver",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "GeraldineMerida",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "beckmast",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Zozoken",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "VemRD",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "LaurieW917",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Arjo14",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Jaipur"
+    },
+    {
+      "id": "518581",
+      "url": "https://boardgamearena.com/tournament?id=518581",
+      "label": "Tournament 518581",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:37:54.245Z",
+      "status": "in_progress",
+      "participants": [
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Arjo14",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "GeraldineMerida",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Bleedingriver",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "LaurieW917",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "rakkamar",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Sharon F",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Zozoken",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Golf"
+    },
+    {
+      "id": "518544",
+      "url": "https://boardgamearena.com/tournament?id=518544",
+      "label": "Tournament 518544",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:38:00.265Z",
+      "status": "finished",
+      "participants": [
+        {
+          "rank": 1,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": 2,
+          "name": "Arjo14",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "beckmast",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "rakkamar",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "Cheery Dog",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "Sharon F",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "zach315",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "LaurieW917",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Zozoken",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Salvidrim",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Bleedingriver",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Cities"
+    },
+    {
+      "id": "518569",
+      "url": "https://boardgamearena.com/tournament?id=518569",
+      "label": "Tournament 518569",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:38:06.227Z",
+      "status": "finished",
+      "participants": [
+        {
+          "rank": 1,
+          "name": "Sharon F",
+          "active": true
+        },
+        {
+          "rank": 2,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "zach315",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "beckmast",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Cheery Dog",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "rakkamar",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "Arjo14",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Bleedingriver",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "stopherjones",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Salvidrim",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Zozoken",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "GeraldineMerida",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "LaurieW917",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Number Drop"
+    },
+    {
+      "id": "518571",
+      "url": "https://boardgamearena.com/tournament?id=518571",
+      "label": "Tournament 518571",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:38:12.261Z",
+      "status": "finished",
+      "participants": [
+        {
+          "rank": 1,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": 2,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "Salvidrim",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "GeraldineMerida",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Cheery Dog",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "Zozoken",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "rakkamar",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Arjo14",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "beckmast",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Sharon F",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "zach315",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "LaurieW917",
+          "active": false
+        },
+        {
+          "rank": 9,
+          "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": 9,
+          "name": "Bleedingriver",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Setup"
+    },
+    {
+      "id": "518551",
+      "url": "https://boardgamearena.com/tournament?id=518551",
+      "label": "Tournament 518551",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:38:18.313Z",
+      "status": "in_progress",
+      "participants": [
+        {
+          "rank": 1,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": 2,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "Arjo14",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "zach315",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "rakkamar",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Bleedingriver",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "beckmast",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Sharon F",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Zozoken",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "GeraldineMerida",
+          "active": false
+        },
+        {
+          "rank": 9,
+          "name": "Salvidrim",
+          "active": false
+        },
+        {
+          "rank": 9,
+          "name": "LaurieW917",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Sushi Go"
+    },
+    {
+      "id": "518577",
+      "url": "https://boardgamearena.com/tournament?id=518577",
+      "label": "Tournament 518577",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:38:24.188Z",
+      "status": "finished",
+      "participants": [
+        {
+          "rank": 1,
+          "name": "GeraldineMerida",
+          "active": true
+        },
+        {
+          "rank": 2,
+          "name": "Cheery Dog",
+          "active": false
+        },
+        {
+          "rank": 2,
+          "name": "Zozoken",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "Salvidrim",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "LaurieW917",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "rakkamar",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "stopherjones",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "Arjo14",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Sharon F",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Bleedingriver",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Seasonal 2026-1",
+      "title": "Draftosaurus"
     }
   ]
 }
