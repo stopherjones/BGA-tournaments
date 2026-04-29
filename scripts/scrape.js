@@ -33,10 +33,18 @@ const STATUS_LABEL = {
 };
 
 // ── Manual overrides ──────────────────────────────────────────────────────────
-// If BGA ever shows swapped fields for specific tournaments, we can re-enable a
-// per-ID swap here. For now, keep the default mapping:
-// - `title`     = tournament/event name (large header)
-// - `game_name` = game name (smaller subheader)
+// For some tournaments, the "tournament/event title" and "game name" are swapped
+// on the BGA page (due to how they were created/configured). For these IDs we
+// flip the scraped values so the JSON remains consistent:
+// - `title`     = event name (e.g. "TBA Around the World")
+// - `game_name` = game name  (e.g. "Trek12")
+const SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
+  '554868',
+  '538858',
+  '538885',
+  '554870',
+  '538888',
+]);
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 (async () => {
@@ -48,23 +56,25 @@ const STATUS_LABEL = {
   console.log('Browser launched');
 
   for (const tournament of data.tournaments) {
-    console.log(`\n── Checking: ${tournament.label} (id ${tournament.id})`);
+    const displayName = tournament.game_name || tournament.title || tournament.label || `Tournament ${tournament.id}`;
+    console.log(`\n── Checking: ${displayName} (id ${tournament.id})`);
     try {
       const result = await scrapeTournament(browser, tournament.url);
+      const normalized = normalizeScrapeResult(tournament, result);
       const prevStatus = tournament.status;
 
-      tournament.status       = result.status;
-      tournament.participants = result.participants;
-      tournament.game_name    = result.game_name || tournament.game_name;
-      tournament.title        = result.title     || tournament.title;
+      tournament.status       = normalized.status;
+      tournament.participants = normalized.participants;
+      tournament.game_name    = normalized.game_name || tournament.game_name;
+      tournament.title        = normalized.title     || tournament.title;
       tournament.last_checked = new Date().toISOString();
 
-      console.log(`  Status: ${result.status} | Players: ${result.participants.length}`);
+      console.log(`  Status: ${normalized.status} | Players: ${normalized.participants.length}`);
 
-      if (prevStatus !== result.status) {
+      if (prevStatus !== normalized.status) {
         tournament.last_status = prevStatus;
-        changes.push({ tournament, from: prevStatus, to: result.status });
-        console.log(`  ⚡ Status changed: ${prevStatus} → ${result.status}`);
+        changes.push({ tournament, from: prevStatus, to: normalized.status });
+        console.log(`  ⚡ Status changed: ${prevStatus} → ${normalized.status}`);
       }
     } catch (err) {
       console.error(`  ✗ Error scraping ${tournament.url}:`, err.message);
@@ -85,6 +95,12 @@ const STATUS_LABEL = {
   }
 })();
 
+function normalizeScrapeResult(tournament, result) {
+  const id = String(tournament?.id ?? '');
+  if (!SWAP_TITLE_AND_GAME_FOR_IDS.has(id)) return result;
+  return { ...result, title: result.game_name, game_name: result.title };
+}
+
 function mergeSeedsIntoData(data) {
   const seeds = loadSeeds();
   if (!seeds || seeds.length === 0) return;
@@ -103,7 +119,6 @@ function mergeSeedsIntoData(data) {
       const t = {
         id,
         url,
-        label: seed.label || `Tournament ${id}`,
         last_status: null,
         last_checked: null,
         status: null,
@@ -116,7 +131,6 @@ function mergeSeedsIntoData(data) {
 
     // Backfill / sync fields without clobbering cached scrape state
     if (!existing.url) existing.url = url;
-    if (seed.label && (!existing.label || existing.label.startsWith('Tournament '))) existing.label = seed.label;
   }
 }
 
@@ -138,7 +152,6 @@ function loadSeeds() {
       if (!parsed) continue;
       seeds.push({
         ...parsed,
-        label: typeof item.label === 'string' && item.label.trim() ? item.label.trim() : undefined,
       });
     }
   }

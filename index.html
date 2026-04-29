@@ -337,8 +337,8 @@
       <div class="card" data-status="${status}">
         <div class="card-header">
           <div style="flex:1">
-            <div class="card-title">${escHtml(t.label || t.title || 'Tournament ' + t.id)}</div>
-            ${t.game_name ? `<div class="card-game">🎮 ${escHtml(t.game_name)}</div>` : ''}
+            <div class="card-title">${escHtml(t.game_name || 'Tournament ' + t.id)}</div>
+            ${t.title ? `<div class="card-game">🎮 ${escHtml(t.title)}</div>` : ''}
           </div>
           <span class="status-pill status-${status}">${icon} ${label}</span>
         </div>
