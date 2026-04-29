@@ -1,0 +1,16 @@
+{
+  "name": "bga-tournament-tracker",
+  "version": "1.0.0",
+  "description": "Track Board Game Arena tournament statuses and send email alerts",
+  "scripts": {
+    "scrape": "node scripts/scrape.js",
+    "test-scrape": "node scripts/scrape.js"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.14",
+    "playwright": "^1.44.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

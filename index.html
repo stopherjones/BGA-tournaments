@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BGA Tournament Tracker</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #23263a;
+      --border: #2e3250;
+      --accent: #4f8ef7;
+      --planned: #7c5cfc;
+      --in-progress: #f5a623;
+      --finished: #27ae60;
+      --unknown: #888;
+      --text: #e8eaf6;
+      --muted: #9095b4;
+      --gold: #f5c842;
+      --silver: #b0bec5;
+      --bronze: #cd7f32;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+    }
+
+    header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    header h1 { font-size: 1.5rem; font-weight: 700; }
+    header .logo { font-size: 2rem; }
+    header .subtitle { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
+    header .last-updated { margin-left: auto; font-size: 0.8rem; color: var(--muted); text-align: right; }
+
+    main { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
+
+    /* ── Filters ── */
+    .filters {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      padding: 6px 16px;
+      border-radius: 99px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all .15s;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--text); }
+    .filter-btn.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+    /* ── Cards ── */
+    .cards { display: grid; gap: 20px; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      transition: border-color .2s;
+    }
+    .card:hover { border-color: var(--accent); }
+
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 10px;
+      border-radius: 99px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .status-planned     { background: #2a1f5e; color: var(--planned); }
+    .status-in_progress { background: #3d2b00; color: var(--in-progress); }
+    .status-finished    { background: #0d3320; color: var(--finished); }
+    .status-unknown     { background: #222; color: var(--unknown); }
+
+    .card-title { font-size: 1.1rem; font-weight: 600; line-height: 1.3; }
+    .card-game  { font-size: 0.85rem; color: var(--muted); margin-top: 3px; }
+
+    .card-meta {
+      display: flex;
+      gap: 18px;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .card-meta span { display: flex; align-items: center; gap: 4px; }
+
+    /* ── Ranking table ── */
+    .ranking-toggle {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      transition: all .15s;
+    }
+    .ranking-toggle:hover { border-color: var(--accent); color: var(--text); }
+
+    .ranking-table {
+      display: none;
+      margin-top: 14px;
+      overflow-x: auto;
+    }
+    .ranking-table.open { display: block; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    thead th {
+      text-align: left;
+      padding: 8px 12px;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      font-weight: 500;
+    }
+    tbody tr:hover { background: var(--surface2); }
+    tbody td { padding: 7px 12px; border-bottom: 1px solid var(--border); }
+
+    .rank-1 { color: var(--gold); font-weight: 700; }
+    .rank-2 { color: var(--silver); font-weight: 600; }
+    .rank-3 { color: var(--bronze); font-weight: 600; }
+
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 12px;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    /* ── Empty state ── */
+    .empty { text-align: center; color: var(--muted); padding: 60px 0; font-size: 1rem; }
+
+    /* ── Loading ── */
+    .loading { text-align: center; padding: 80px; color: var(--muted); }
+    .spinner {
+      width: 40px; height: 40px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    @media (max-width: 600px) {
+      header { padding: 16px; }
+      main { padding: 20px 16px; }
+      .card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <span class="logo">🎲</span>
+  <div>
+    <h1>BGA Tournament Tracker</h1>
+    <div class="subtitle">Board Game Arena · auto-updated every 2 hours</div>
+  </div>
+  <div class="last-updated" id="last-updated"></div>
+</header>
+
+<main>
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="planned">📅 Planned</button>
+    <button class="filter-btn" data-filter="in_progress">▶️ In Progress</button>
+    <button class="filter-btn" data-filter="finished">🏆 Finished</button>
+  </div>
+
+  <div class="cards" id="cards">
+    <div class="loading">
+      <div class="spinner"></div>
+      Loading tournament data…
+    </div>
+  </div>
+</main>
+
+<script>
+  const STATUS_ICON = {
+    planned:     '📅',
+    in_progress: '▶️',
+    finished:    '🏆',
+    unknown:     '❓',
+  };
+
+  const STATUS_TEXT = {
+    planned:     'Planned',
+    in_progress: 'In Progress',
+    finished:    'Finished',
+    unknown:     'Unknown',
+  };
+
+  let allTournaments = [];
+  let currentFilter = 'all';
+
+  // ── Fetch data ──────────────────────────────────────────────────────────────
+  fetch('data/tournaments.json?_=' + Date.now())
+    .then(r => r.json())
+    .then(data => {
+      allTournaments = data.tournaments;
+
+      // Last-updated timestamp (most recent check across all tournaments)
+      const dates = allTournaments
+        .map(t => t.last_checked)
+        .filter(Boolean)
+        .sort();
+      if (dates.length) {
+        const d = new Date(dates[dates.length - 1]);
+        document.getElementById('last-updated').innerHTML =
+          `Last checked<br>${d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}`;
+      }
+
+      render();
+    })
+    .catch(err => {
+      document.getElementById('cards').innerHTML =
+        `<div class="empty">⚠️ Could not load tournament data.<br><small>${err.message}</small></div>`;
+    });
+
+  // ── Render ──────────────────────────────────────────────────────────────────
+  function render() {
+    const filtered = currentFilter === 'all'
+      ? allTournaments
+      : allTournaments.filter(t => t.status === currentFilter);
+
+    const container = document.getElementById('cards');
+
+    if (filtered.length === 0) {
+      container.innerHTML = '<div class="empty">No tournaments match this filter.</div>';
+      return;
+    }
+
+    container.innerHTML = filtered.map((t, i) => cardHTML(t, i)).join('');
+
+    // Attach toggle listeners
+    container.querySelectorAll('.ranking-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const table = btn.nextElementSibling;
+        table.classList.toggle('open');
+        btn.textContent = table.classList.contains('open')
+          ? '▲ Hide rankings'
+          : `▼ Show rankings (${btn.dataset.count})`;
+      });
+    });
+  }
+
+  function cardHTML(t) {
+    const status   = t.status || 'unknown';
+    const icon     = STATUS_ICON[status];
+    const label    = STATUS_TEXT[status];
+    const checked  = t.last_checked
+      ? new Date(t.last_checked).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })
+      : 'never';
+
+    let rankingSection = '';
+    if (t.participants && t.participants.length > 0) {
+      const rows = t.participants.map(p => {
+        const rankClass = p.rank === 1 ? 'rank-1' : p.rank === 2 ? 'rank-2' : p.rank === 3 ? 'rank-3' : '';
+        const rankIcon  = p.rank === 1 ? '🥇' : p.rank === 2 ? '🥈' : p.rank === 3 ? '🥉' : '';
+        return `<tr>
+          <td class="${rankClass}">${rankIcon || (p.rank ?? '–')}</td>
+          <td>${escHtml(p.name)}</td>
+        </tr>`;
+      }).join('');
+
+      const btnLabel = `▼ Show rankings (${t.participants.length})`;
+      rankingSection = `
+        <button class="ranking-toggle" data-count="${t.participants.length}">${btnLabel}</button>
+        <div class="ranking-table">
+          <table>
+            <thead><tr><th>#</th><th>Player</th></tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+        </div>`;
+    }
+
+    return `
+      <div class="card" data-status="${status}">
+        <div class="card-header">
+          <div style="flex:1">
+            <div class="card-title">${escHtml(t.label || t.title || 'Tournament ' + t.id)}</div>
+            ${t.game_name ? `<div class="card-game">🎮 ${escHtml(t.game_name)}</div>` : ''}
+          </div>
+          <span class="status-pill status-${status}">${icon} ${label}</span>
+        </div>
+
+        <div class="card-meta">
+          <span>🆔 ID: ${t.id}</span>
+          ${t.participants?.length ? `<span>👥 ${t.participants.length} player${t.participants.length !== 1 ? 's' : ''}</span>` : ''}
+          <span>🕐 Checked: ${checked}</span>
+        </div>
+
+        ${rankingSection}
+
+        <a class="card-link" href="${t.url}" target="_blank" rel="noopener">
+          ↗ View on BGA
+        </a>
+      </div>`;
+  }
+
+  // ── Filter buttons ──────────────────────────────────────────────────────────
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      render();
+    });
+  });
+
+  // ── Utils ───────────────────────────────────────────────────────────────────
+  function escHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "config": {
+    "notify_email": "your@email.com"
+  },
+  "tournaments": [
+    {
+      "id": "554868",
+      "url": "https://boardgamearena.com/tournament?id=554868",
+      "label": "My Planned Tournament",
+      "last_status": null,
+      "last_checked": null,
+      "status": null,
+      "participants": []
+    },
+    {
+      "id": "538858",
+      "url": "https://boardgamearena.com/tournament?id=538858",
+      "label": "Tournament In Progress #1",
+      "last_status": null,
+      "last_checked": null,
+      "status": null,
+      "participants": []
+    },
+    {
+      "id": "538885",
+      "url": "https://boardgamearena.com/tournament?id=538885",
+      "label": "Tournament In Progress #2",
+      "last_status": null,
+      "last_checked": null,
+      "status": null,
+      "participants": []
+    },
+    {
+      "id": "518587",
+      "url": "https://boardgamearena.com/tournament?id=518587",
+      "label": "Finished Tournament #1",
+      "last_status": null,
+      "last_checked": null,
+      "status": null,
+      "participants": []
+    },
+    {
+      "id": "518584",
+      "url": "https://boardgamearena.com/tournament?id=518584",
+      "label": "Finished Tournament #2",
+      "last_status": null,
+      "last_checked": null,
+      "status": null,
+      "participants": []
+    }
+  ]
+}

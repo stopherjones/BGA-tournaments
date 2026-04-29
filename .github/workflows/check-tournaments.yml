@@ -1,0 +1,90 @@
+name: Check BGA Tournaments
+
+on:
+  # Run every 2 hours
+  schedule:
+    - cron: '0 */2 * * *'
+
+  # Also allow manual runs from the Actions tab
+  workflow_dispatch:
+
+# Only allow one run at a time to avoid race conditions on the data file
+concurrency:
+  group: bga-tracker
+  cancel-in-progress: false
+
+permissions:
+  contents: write   # needed to commit updated tournaments.json
+  pages: write      # needed to deploy GitHub Pages
+  id-token: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ── Checkout ────────────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      # ── Node.js ─────────────────────────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # ── Dependencies ────────────────────────────────────────────────────────
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright browser
+        run: npx playwright install chromium --with-deps
+
+      # ── Scrape ──────────────────────────────────────────────────────────────
+      - name: Run scraper
+        env:
+          NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+          SMTP_HOST:    ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:    ${{ secrets.SMTP_PORT }}
+          SMTP_USER:    ${{ secrets.SMTP_USER }}
+          SMTP_PASS:    ${{ secrets.SMTP_PASS }}
+        run: npm run scrape
+
+      # ── Commit updated data ─────────────────────────────────────────────────
+      - name: Commit updated tournament data
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/tournaments.json
+          # Only commit if there are actual changes
+          git diff --staged --quiet || git commit -m "chore: update tournament data $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git push
+
+  # ── Deploy GitHub Pages ──────────────────────────────────────────────────────
+  deploy-pages:
+    needs: scrape
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main   # pick up the freshly-committed data
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'   # whole repo – index.html is at root
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
