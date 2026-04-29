@@ -8,12 +8,17 @@
       "url": "https://boardgamearena.com/tournament?id=554868",
       "label": "My Planned Tournament",
       "last_status": null,
-      "last_checked": "2026-04-29T10:38:41.475Z",
+      "last_checked": "2026-04-29T11:29:14.478Z",
       "status": "planned",
       "participants": [
         {
           "rank": null,
           "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
           "active": true
         }
       ],
@@ -25,7 +30,7 @@
       "url": "https://boardgamearena.com/tournament?id=538858",
       "label": "Tournament In Progress #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T10:38:47.274Z",
+      "last_checked": "2026-04-29T11:29:20.176Z",
       "status": "in_progress",
       "participants": [
         {
@@ -92,7 +97,7 @@
       "url": "https://boardgamearena.com/tournament?id=538885",
       "label": "Tournament In Progress #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T10:38:53.636Z",
+      "last_checked": "2026-04-29T11:29:26.496Z",
       "status": "in_progress",
       "participants": [
         {
@@ -159,7 +164,7 @@
       "url": "https://boardgamearena.com/tournament?id=518587",
       "label": "Finished Tournament #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T10:38:59.412Z",
+      "last_checked": "2026-04-29T11:29:32.185Z",
       "status": "finished",
       "participants": [
         {
@@ -246,7 +251,7 @@
       "url": "https://boardgamearena.com/tournament?id=518584",
       "label": "Finished Tournament #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T10:39:05.930Z",
+      "last_checked": "2026-04-29T11:29:38.627Z",
       "status": "finished",
       "participants": [
         {
