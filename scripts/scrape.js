@@ -123,26 +123,38 @@ async function scrapeTournament(browser, url) {
     // ── Participants ──────────────────────────────────────────────────────────
     // BGA renders every player name as: <span class="... playername ...">username</span>
     // Consistent across planned, in-progress, and finished tournaments.
+    //
+    // For finished tournaments, rank is stored in data-rank-start on the
+    // container div, e.g.: <div data-rank-start="1">...<span class="playername">VemRD</span>
+    // Multiple players in the same container share that rank (tied places).
     const participants = [];
     const seen = new Set();
 
-    findAll('span.playername').forEach(el => {
-      const name = (el ? el.textContent.trim() : '');
-      if (!name || seen.has(name)) return;
-      seen.add(name);
-      const isEliminated = el.className.includes('line-through');
-      participants.push({ rank: null, name, active: !isEliminated });
-    });
+    // Strategy A: rank containers (finished tournaments)
+    const rankContainers = findAll('[data-rank-start]');
+    if (rankContainers.length > 0) {
+      rankContainers.forEach(container => {
+        const rank = parseInt(container.getAttribute('data-rank-start'), 10);
+        container.querySelectorAll('span.playername').forEach(el => {
+          const name = el.textContent.trim();
+          if (!name || seen.has(name)) return;
+          seen.add(name);
+          const isEliminated = el.className.includes('line-through');
+          participants.push({ rank, name, active: !isEliminated });
+        });
+      });
+    }
 
-    // For finished tournaments, try to read rank numbers adjacent to each player.
-    participants.forEach(p => {
-      const el = [...document.querySelectorAll('span.playername')].find(e => e.textContent.trim() === p.name);
-      if (!el) return;
-      const row = el.closest('tr, li, [class*="row"]');
-      if (!row) return;
-      const m = row.textContent.trim().match(/^(\d+)/);
-      if (m) p.rank = parseInt(m[1], 10);
-    });
+    // Strategy B: no rank containers (planned / in-progress) — just list players
+    if (participants.length === 0) {
+      findAll('span.playername').forEach(el => {
+        const name = el.textContent.trim();
+        if (!name || seen.has(name)) return;
+        seen.add(name);
+        const isEliminated = el.className.includes('line-through');
+        participants.push({ rank: null, name, active: !isEliminated });
+      });
+    }
 
     return { title, game_name, status, participants };
   });
