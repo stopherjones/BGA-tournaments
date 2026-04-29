@@ -198,19 +198,16 @@ async function scrapeTournament(browser, url) {
     const findAll = sel => [...document.querySelectorAll(sel)];
 
     // ── Title ─────────────────────────────────────────────────────────────────
-    // BGA uses a large span for the tournament name, e.g.:
-    //   <span class="text-xl tablet:text-2xl leading-none truncate">TBA Around the World</span>
-    const titleEl = find('span.text-xl') || find('span[class*="text-xl"]');
+    // Mapping the smaller subheader (text-sm) to the Title
+    const titleEl = find('span.text-sm.truncate') || find('span[class*="text-sm"]');
     const title   = text(titleEl);
 
     // ── Game name ─────────────────────────────────────────────────────────────
-    // Sits in a smaller sibling span, e.g.:
-    //   <span class="text-sm tablet:text-base leading-none truncate">Go Goa</span>
-    const gameEl =
-      find('span.text-sm[class*="truncate"]') ||
-      find('span[class*="text-sm"][class*="truncate"]') ||
-      find('.game_name') ||
-      find('a[href*="/gamepanel"]');
+    // Mapping the larger main header (text-xl) to the Game Name
+    const gameEl = 
+      find('span.text-xl.truncate') || 
+      find('span[class*="text-xl"]') ||
+      find('.game_name');
     const game_name = text(gameEl);
 
     // ── Status ────────────────────────────────────────────────────────────────
