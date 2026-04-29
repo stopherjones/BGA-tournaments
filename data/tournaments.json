@@ -8,7 +8,7 @@
       "url": "https://boardgamearena.com/tournament?id=554868",
       "label": "My Planned Tournament",
       "last_status": null,
-      "last_checked": "2026-04-29T12:40:34.280Z",
+      "last_checked": "2026-04-29T13:05:32.626Z",
       "status": "planned",
       "participants": [
         {
@@ -35,6 +35,11 @@
           "rank": null,
           "name": "Cheery Dog",
           "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
         }
       ],
       "game_name": "Go Goa",
@@ -45,7 +50,7 @@
       "url": "https://boardgamearena.com/tournament?id=538858",
       "label": "Tournament In Progress #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T12:40:40.348Z",
+      "last_checked": "2026-04-29T13:05:39.039Z",
       "status": "in_progress",
       "participants": [
         {
@@ -112,7 +117,7 @@
       "url": "https://boardgamearena.com/tournament?id=538885",
       "label": "Tournament In Progress #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T12:40:46.952Z",
+      "last_checked": "2026-04-29T13:05:45.778Z",
       "status": "in_progress",
       "participants": [
         {
@@ -179,7 +184,7 @@
       "url": "https://boardgamearena.com/tournament?id=518587",
       "label": "Finished Tournament #1",
       "last_status": "planned",
-      "last_checked": "2026-04-29T12:40:52.816Z",
+      "last_checked": "2026-04-29T13:05:51.924Z",
       "status": "finished",
       "participants": [
         {
@@ -266,7 +271,7 @@
       "url": "https://boardgamearena.com/tournament?id=518584",
       "label": "Finished Tournament #2",
       "last_status": "planned",
-      "last_checked": "2026-04-29T12:40:59.573Z",
+      "last_checked": "2026-04-29T13:05:58.876Z",
       "status": "finished",
       "participants": [
         {
@@ -342,6 +347,259 @@
       ],
       "game_name": "TBA Seasonal 2026-1",
       "title": "Bubble Pop"
+    },
+    {
+      "id": "554870",
+      "url": "https://boardgamearena.com/tournament?id=554870",
+      "label": "Tournament 554870",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:06:05.354Z",
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        }
+      ],
+      "game_name": "Jaipur",
+      "title": "TBA Around the World"
+    },
+    {
+      "id": "538888",
+      "url": "https://boardgamearena.com/tournament?id=538888",
+      "label": "Tournament 538888",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:06:11.769Z",
+      "status": "in_progress",
+      "participants": [
+        {
+          "rank": null,
+          "name": "Silene",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "VemRD",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "LaurieW917",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Bleedingriver",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Niall",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Sharon F",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "ren v hoek",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": false
+        }
+      ],
+      "game_name": "Trek12",
+      "title": "TBA Around the World"
+    },
+    {
+      "id": "528477",
+      "url": "https://boardgamearena.com/tournament?id=528477",
+      "label": "Tournament 528477",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:06:18.184Z",
+      "status": "in_progress",
+      "participants": [
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Niall",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Castz",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "CabbageOfKastis",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "GeraldineMerida",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Bleedingriver",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Around the World",
+      "title": "Assyria"
+    },
+    {
+      "id": "528478",
+      "url": "https://boardgamearena.com/tournament?id=528478",
+      "label": "Tournament 528478",
+      "last_status": null,
+      "last_checked": "2026-04-29T13:06:24.611Z",
+      "status": "in_progress",
+      "participants": [
+        {
+          "rank": null,
+          "name": "Niall",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Castz",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "CabbageOfKastis",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "Bleedingriver",
+          "active": false
+        },
+        {
+          "rank": null,
+          "name": "VemRD",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "daniinnc",
+          "active": false
+        }
+      ],
+      "game_name": "TBA Around the World",
+      "title": "Tigris and Euphrates"
     }
   ]
 }
