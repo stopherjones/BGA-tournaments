@@ -33,12 +33,14 @@ const STATUS_LABEL = {
 };
 
 // ── Manual overrides ──────────────────────────────────────────────────────────
-// For some tournaments, the "tournament/event title" and "game name" are swapped
-// on the BGA page (due to how they were created/configured). For these IDs we
-// flip the scraped values so the JSON remains consistent:
+// The BGA page fields we scrape appear inverted relative to our desired schema.
+// By default we swap them so our JSON is consistent:
 // - `title`     = event name (e.g. "TBA Around the World")
 // - `game_name` = game name  (e.g. "Trek12")
-const SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
+//
+// Some tournaments were configured "wrong way round" on BGA, and for those the
+// default swap would make them incorrect. So we *do not* swap for these IDs.
+const DONT_SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
   '554868',
   '538858',
   '538885',
@@ -97,7 +99,7 @@ const SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
 
 function normalizeScrapeResult(tournament, result) {
   const id = String(tournament?.id ?? '');
-  if (!SWAP_TITLE_AND_GAME_FOR_IDS.has(id)) return result;
+  if (DONT_SWAP_TITLE_AND_GAME_FOR_IDS.has(id)) return result;
   return { ...result, title: result.game_name, game_name: result.title };
 }
 
