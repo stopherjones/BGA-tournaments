@@ -1,9 +1,9 @@
 name: Check BGA Tournaments
 
 on:
-  # Run every 2 hours
+  # Run once per day (01:00 UTC)
   schedule:
-    - cron: '0 */2 * * *'
+    - cron: '0 1 * * *'
 
   # Also allow manual runs from the Actions tab
   workflow_dispatch:
