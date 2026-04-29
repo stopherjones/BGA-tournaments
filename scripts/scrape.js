@@ -33,15 +33,10 @@ const STATUS_LABEL = {
 };
 
 // ── Manual overrides ──────────────────────────────────────────────────────────
-// Some tournaments were created on BGA with the "Tournament title" and "Game name"
-// fields accidentally swapped. For these IDs, flip the scraped values back.
-const SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
-  '538888',
-  '538885',
-  '538858',
-  '554868',
-  '554870',
-]);
+// If BGA ever shows swapped fields for specific tournaments, we can re-enable a
+// per-ID swap here. For now, keep the default mapping:
+// - `title`     = tournament/event name (large header)
+// - `game_name` = game name (smaller subheader)
 
 // ── Main ──────────────────────────────────────────────────────────────────────
 (async () => {
@@ -56,21 +51,20 @@ const SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
     console.log(`\n── Checking: ${tournament.label} (id ${tournament.id})`);
     try {
       const result = await scrapeTournament(browser, tournament.url);
-      const normalized = normalizeScrapeResult(tournament, result);
       const prevStatus = tournament.status;
 
-      tournament.status       = normalized.status;
-      tournament.participants = normalized.participants;
-      tournament.game_name    = normalized.game_name || tournament.game_name;
-      tournament.title        = normalized.title     || tournament.title;
+      tournament.status       = result.status;
+      tournament.participants = result.participants;
+      tournament.game_name    = result.game_name || tournament.game_name;
+      tournament.title        = result.title     || tournament.title;
       tournament.last_checked = new Date().toISOString();
 
-      console.log(`  Status: ${normalized.status} | Players: ${normalized.participants.length}`);
+      console.log(`  Status: ${result.status} | Players: ${result.participants.length}`);
 
-      if (prevStatus !== normalized.status) {
+      if (prevStatus !== result.status) {
         tournament.last_status = prevStatus;
-        changes.push({ tournament, from: prevStatus, to: normalized.status });
-        console.log(`  ⚡ Status changed: ${prevStatus} → ${normalized.status}`);
+        changes.push({ tournament, from: prevStatus, to: result.status });
+        console.log(`  ⚡ Status changed: ${prevStatus} → ${result.status}`);
       }
     } catch (err) {
       console.error(`  ✗ Error scraping ${tournament.url}:`, err.message);
@@ -90,18 +84,6 @@ const SWAP_TITLE_AND_GAME_FOR_IDS = new Set([
     console.log('\nNo status changes detected.');
   }
 })();
-
-function normalizeScrapeResult(tournament, result) {
-  const id = String(tournament?.id ?? '');
-  if (!SWAP_TITLE_AND_GAME_FOR_IDS.has(id)) return result;
-
-  return {
-    ...result,
-    // The page shows the swapped values; flip them to match our JSON schema.
-    title: result.game_name,
-    game_name: result.title,
-  };
-}
 
 function mergeSeedsIntoData(data) {
   const seeds = loadSeeds();
