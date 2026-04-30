@@ -135,7 +135,7 @@ async function scrapeTournament(browser, url) {
     const find    = sel => document.querySelector(sel);
     const findAll = sel => [...document.querySelectorAll(sel)];
 
-    const swapIds = ["554870", "554868", "538858", "538885", "538888"];
+    const swapIds = ["545598", "554870", "554868", "538858", "538885", "538888"];
     const needsSwap = swapIds.some(id => currentUrl.includes(`id=${id}`));
 
     const smallText = text(find('span.text-sm.truncate') || find('span[class*="text-sm"]'));
