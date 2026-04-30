@@ -57,7 +57,6 @@ const STATUS_LABEL = {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
   console.log('\n✓ data/tournaments.json updated');
 
-  // Logic for changes (console logging instead of email)
   if (changes.length > 0) {
     console.log(`\n📢  Detected ${changes.length} status changes.`);
   } else {
@@ -149,23 +148,22 @@ async function scrapeTournament(browser, url) {
       title = smallText; game_name = largeText;
     }
 
-    const bodyText = document.body.innerText.toLowerCase();
     let status = 'unknown';
-    
-    // 1. Check Finished FIRST
-    if (/\bfinished\b|\bcompleted\b|\bfinal ranking\b|\bwinner\b/.test(bodyText)) {
+
+    // 1. Check for "Finished" in the specific progress bar span
+    const finishedSpan = find('span.text-xl.text-center.leading-tight.line-clamp-2') || find('span.line-clamp-2');
+    const finishedText = text(finishedSpan).toLowerCase();
+
+    // 2. Check for "Started" or "Starts" in the svelte-labeled divs
+    const progressDiv = find('div.text-xl.svelte-1yitbuo') || find('div.text-xl');
+    const progressText = text(progressDiv).toLowerCase();
+
+    if (finishedText.includes('finished')) {
       status = 'finished';
-    } 
-    // 2. Check Planned/Upcoming
-    else if (/\bopen\b/.test(bodyText) && /\bstarts\b/.test(bodyText)) {
-      status = 'planned';
-    }
-    else if (/\bregistration\b|\bnot started\b|\bupcoming\b/.test(bodyText)) {
-      status = 'planned';
-    }
-    // 3. Check In Progress LAST
-    else if (/\bin progress\b|\bongoing\b|\bround \d/.test(bodyText)) {
+    } else if (progressText.includes('started')) {
       status = 'in_progress';
+    } else if (progressText.includes('starts')) {
+      status = 'planned';
     }
 
     const participants = [];
