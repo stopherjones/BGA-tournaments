@@ -168,18 +168,53 @@ async function scrapeTournament(browser, url) {
 
     const participants = [];
     const seen = new Set();
-    const rankContainers = findAll('[data-rank-start]');
-    if (rankContainers.length > 0) {
-      rankContainers.forEach(container => {
-        const rank = parseInt(container.getAttribute('data-rank-start'), 10);
-        container.querySelectorAll('span.playername').forEach(el => {
-          const name = el.textContent.trim();
-          if (!name || seen.has(name)) return;
-          seen.add(name);
-          participants.push({ rank, name, active: !el.className.includes('line-through') });
-        });
-      });
+    
+    // With this updated block:
+const rankContainers = findAll('[data-rank-start]');
+if (rankContainers.length > 0) {
+  let lastAssignedRank = 0;
+  let lastGroupSize = 0;
+
+  rankContainers.forEach(container => {
+    // raw rank from the DOM (may be 0)
+    let rawRank = parseInt(container.getAttribute('data-rank-start'), 10);
+    if (isNaN(rawRank)) rawRank = 0;
+
+    // collect player elements for this container
+    const players = [...container.querySelectorAll('span.playername')].map(el => ({ el, name: el.textContent.trim() }))
+      .filter(p => p.name && !seen.has(p.name));
+
+    const groupSize = players.length;
+
+    // compute effective rank:
+    // - if rawRank is a positive integer, use it
+    // - if rawRank is 0 (or missing), continue from previous: lastAssignedRank + lastGroupSize
+    // - if this is the very first group and rawRank is 0, start at 1
+    let effectiveRank;
+    if (rawRank > 0) {
+      effectiveRank = rawRank;
+    } else {
+      effectiveRank = (lastAssignedRank === 0) ? 1 : (lastAssignedRank + lastGroupSize);
     }
+
+    // push players with the computed effectiveRank
+    players.forEach(({ el, name }) => {
+      seen.add(name);
+      participants.push({
+        rank: effectiveRank,
+        name,
+        active: !el.className.includes('line-through')
+      });
+    });
+
+    // update trackers for the next group
+    if (groupSize > 0) {
+      lastAssignedRank = effectiveRank;
+      lastGroupSize = groupSize;
+    }
+  });
+}
+
     if (participants.length === 0) {
       findAll('span.playername').forEach(el => {
         const name = el.textContent.trim();
