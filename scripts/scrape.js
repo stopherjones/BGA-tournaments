@@ -151,10 +151,22 @@ async function scrapeTournament(browser, url) {
 
     const bodyText = document.body.innerText.toLowerCase();
     let status = 'unknown';
-    if (/\bopen\b/.test(bodyText) && /\bstarts\b/.test(bodyText)) status = 'planned';
-    else if (/\bin progress\b|\bongoing\b|\bround \d/.test(bodyText)) status = 'in_progress';
-    else if (/\bfinished\b|\bcompleted\b|\bfinal ranking\b|\bwinner\b/.test(bodyText)) status = 'finished';
-    else if (/\bregistration\b|\bnot started\b|\bupcoming\b/.test(bodyText)) status = 'planned';
+    
+    // 1. Check Finished FIRST
+    if (/\bfinished\b|\bcompleted\b|\bfinal ranking\b|\bwinner\b/.test(bodyText)) {
+      status = 'finished';
+    } 
+    // 2. Check Planned/Upcoming
+    else if (/\bopen\b/.test(bodyText) && /\bstarts\b/.test(bodyText)) {
+      status = 'planned';
+    }
+    else if (/\bregistration\b|\bnot started\b|\bupcoming\b/.test(bodyText)) {
+      status = 'planned';
+    }
+    // 3. Check In Progress LAST
+    else if (/\bin progress\b|\bongoing\b|\bround \d/.test(bodyText)) {
+      status = 'in_progress';
+    }
 
     const participants = [];
     const seen = new Set();
