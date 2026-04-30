@@ -218,7 +218,7 @@
     <button class="filter-btn" data-filter="in_progress">▶️ In Progress</button>
     <button class="filter-btn" data-filter="finished">🏆 Finished</button>
     <select id="title-filter" class="filter-select" aria-label="Filter by tournament title">
-      <option value="">All titles</option>
+      <option value="">Filter by event</option>
     </select>
   </div>
 
@@ -377,7 +377,7 @@
     )).sort((a, b) => a.localeCompare(b));
 
     select.innerHTML = [
-      '<option value="">All titles</option>',
+      '<option value="">Filter by event</option>',
       ...titles.map(t => `<option value="${escAttr(t)}">${escHtml(t)}</option>`)
     ].join('');
 
