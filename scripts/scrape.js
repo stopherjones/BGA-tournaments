@@ -1,12 +1,8 @@
 /**
  * BGA Tournament Tracker – scrape.js
- *
- * Scrapes each BGA tournament page, detects status changes, and sends
- * email notifications. Runs via GitHub Actions on a schedule.
  */
 
 const { chromium } = require('playwright');
-const nodemailer   = require('nodemailer');
 const fs           = require('fs');
 const path         = require('path');
 
@@ -61,10 +57,9 @@ const STATUS_LABEL = {
   fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 2));
   console.log('\n✓ data/tournaments.json updated');
 
-  if (changes.length > 0 && process.env.SMTP_HOST) {
-    await sendNotifications(changes, data.config.notify_email);
-  } else if (changes.length > 0) {
-    console.log('\nℹ️  Changes detected but SMTP not configured – skipping email.');
+  // Logic for changes (console logging instead of email)
+  if (changes.length > 0) {
+    console.log(`\n📢  Detected ${changes.length} status changes.`);
   } else {
     console.log('\nNo status changes detected.');
   }
@@ -85,21 +80,13 @@ function mergeSeedsIntoData(data) {
     const existing = byId.get(id);
 
     if (!existing) {
-      const t = {
-        id,
-        url,
-        last_status: null,
-        last_checked: null,
-        status: null,
-        participants: [],
-      };
+      const t = { id, url, last_status: null, last_checked: null, status: null, participants: [] };
       data.tournaments.push(t);
       byId.set(id, t);
-    } else {
-      if (!existing.url) existing.url = url;
+    } else if (!existing.url) {
+      existing.url = url;
     }
   }
-  // Logic to filter/delete tournaments missing from seeds was removed to preserve history.
 }
 
 function loadSeeds() {
@@ -110,15 +97,9 @@ function loadSeeds() {
 
   const seeds = [];
   for (const item of list) {
-    if (typeof item === 'string') {
-      const parsed = parseIdOrUrl(item);
-      if (parsed) seeds.push(parsed);
-      continue;
-    }
-    if (item && typeof item === 'object') {
-      const parsed = parseIdOrUrl(item.url || item.id);
-      if (parsed) seeds.push(parsed);
-    }
+    const str = typeof item === 'string' ? item : item.url || item.id;
+    const parsed = parseIdOrUrl(str);
+    if (parsed) seeds.push(parsed);
   }
 
   const byId = new Map();
@@ -137,19 +118,15 @@ function parseIdOrUrl(input) {
   try {
     const u = new URL(str);
     const id = u.searchParams.get('id');
-    if (id && /^\d+$/.test(id)) {
-      return { id, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(id)}` };
-    }
+    if (id && /^\d+$/.test(id)) return { id, url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(id)}` };
   } catch {}
   const m = str.match(/(?:\?|&)id=(\d+)/);
   if (m) return { id: m[1], url: `https://boardgamearena.com/tournament?id=${encodeURIComponent(m[1])}` };
   return null;
 }
 
-// ── Scraper ───────────────────────────────────────────────────────────────────
 async function scrapeTournament(browser, url) {
   const page = await browser.newPage();
-
   await page.route('**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf}', r => r.abort());
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
   await page.waitForTimeout(3000);
@@ -159,37 +136,26 @@ async function scrapeTournament(browser, url) {
     const find    = sel => document.querySelector(sel);
     const findAll = sel => [...document.querySelectorAll(sel)];
 
-    // ── The Exception List ──────────────────────────────────────────────────
     const swapIds = ["554870", "554868", "538858", "538885", "538888"];
     const needsSwap = swapIds.some(id => currentUrl.includes(`id=${id}`));
 
-    // ── Capture the elements ────────────────────────────────────────────────
     const smallText = text(find('span.text-sm.truncate') || find('span[class*="text-sm"]'));
     const largeText = text(find('span.text-xl.truncate') || find('span[class*="text-xl"]'));
 
     let title, game_name;
     if (needsSwap) {
-      title     = largeText;
-      game_name = smallText;
+      title = largeText; game_name = smallText;
     } else {
-      title     = smallText;
-      game_name = largeText;
+      title = smallText; game_name = largeText;
     }
 
-    // ── Status ────────────────────────────────────────────────────────────────
     const bodyText = document.body.innerText.toLowerCase();
     let status = 'unknown';
-    if (/\bopen\b/.test(bodyText) && /\bstarts\b/.test(bodyText)) {
-      status = 'planned';
-    } else if (/\bin progress\b|\bongoing\b|\bround \d/.test(bodyText)) {
-      status = 'in_progress';
-    } else if (/\bfinished\b|\bcompleted\b|\bfinal ranking\b|\bwinner\b/.test(bodyText)) {
-      status = 'finished';
-    } else if (/\bregistration\b|\bnot started\b|\bupcoming\b/.test(bodyText)) {
-      status = 'planned';
-    }
+    if (/\bopen\b/.test(bodyText) && /\bstarts\b/.test(bodyText)) status = 'planned';
+    else if (/\bin progress\b|\bongoing\b|\bround \d/.test(bodyText)) status = 'in_progress';
+    else if (/\bfinished\b|\bcompleted\b|\bfinal ranking\b|\bwinner\b/.test(bodyText)) status = 'finished';
+    else if (/\bregistration\b|\bnot started\b|\bupcoming\b/.test(bodyText)) status = 'planned';
 
-    // ── Participants ──────────────────────────────────────────────────────────
     const participants = [];
     const seen = new Set();
     const rankContainers = findAll('[data-rank-start]');
@@ -204,7 +170,6 @@ async function scrapeTournament(browser, url) {
         });
       });
     }
-
     if (participants.length === 0) {
       findAll('span.playername').forEach(el => {
         const name = el.textContent.trim();
@@ -219,70 +184,4 @@ async function scrapeTournament(browser, url) {
 
   await page.close();
   return result;
-}
-
-// ── Email ─────────────────────────────────────────────────────────────────────
-async function sendNotifications(changes, toEmail) {
-  const transporter = nodemailer.createTransport({
-    host:   process.env.SMTP_HOST,
-    port:   parseInt(process.env.SMTP_PORT || '587'),
-    secure: process.env.SMTP_PORT === '465',
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-
-  const subject =
-    changes.length === 1
-      ? `BGA Tournament Update: "${changes[0].tournament.game_name || changes[0].tournament.title}" is now ${STATUS_LABEL[changes[0].to]}`
-      : `BGA Tournament Updates: ${changes.length} tournaments changed status`;
-
-  const htmlBody = changes.map(({ tournament, from, to }) => {
-    const fromLabel = from ? STATUS_LABEL[from] : '(first check)';
-    const toLabel   = STATUS_LABEL[to];
-
-    let rankingHtml = '';
-    if (to === 'finished' && tournament.participants.length > 0) {
-      const rows = tournament.participants
-        .slice(0, 20)
-        .map(p => `<tr><td style="padding:4px 12px;">${p.rank ?? '–'}</td><td style="padding:4px 12px;">${p.name}</td></tr>`)
-        .join('');
-      rankingHtml = `
-        <h3 style="margin-top:16px;">Final Rankings</h3>
-        <table border="1" cellspacing="0" cellpadding="0" style="border-collapse:collapse;font-size:14px;">
-          <tr style="background:#eee"><th style="padding:4px 12px;">#</th><th style="padding:4px 12px;">Player</th></tr>
-          ${rows}
-        </table>`;
-    }
-
-    return `
-      <div style="margin-bottom:32px;padding:16px;border:1px solid #ddd;border-radius:8px;">
-        <h2 style="margin:0 0 8px;">${tournament.title}</h2>
-        ${tournament.game_name ? `<p style="margin:0 0 8px;color:#666;">${tournament.game_name}</p>` : ''}
-        <p><strong>Status:</strong> ${fromLabel} → <strong>${toLabel}</strong></p>
-        <p><a href="${tournament.url}">${tournament.url}</a></p>
-        ${rankingHtml}
-      </div>`;
-  }).join('');
-
-  const html = `
-    <html><body style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:16px;">
-      <h1 style="color:#2a5;border-bottom:2px solid #2a5;padding-bottom:8px;">
-        🎲 BGA Tournament Tracker
-      </h1>
-      ${htmlBody}
-      <p style="color:#999;font-size:12px;margin-top:32px;">
-        Checked: ${new Date().toUTCString()}
-      </p>
-    </body></html>`;
-
-  await transporter.sendMail({
-    from:    `"BGA Tracker" <${process.env.SMTP_USER}>`,
-    to:      toEmail || process.env.NOTIFY_EMAIL,
-    subject,
-    html,
-  });
-
-  console.log(`\n✉️  Email sent to ${toEmail || process.env.NOTIFY_EMAIL}`);
 }
