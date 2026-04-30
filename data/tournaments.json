@@ -6,9 +6,9 @@
     {
       "id": "528477",
       "url": "https://boardgamearena.com/tournament?id=528477",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:34:20.449Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:18:13.038Z",
+      "status": "finished",
       "participants": [
         {
           "rank": null,
@@ -72,9 +72,9 @@
     {
       "id": "528478",
       "url": "https://boardgamearena.com/tournament?id=528478",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:34:27.155Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:18:18.629Z",
+      "status": "finished",
       "participants": [
         {
           "rank": null,
@@ -138,9 +138,9 @@
     {
       "id": "518549",
       "url": "https://boardgamearena.com/tournament?id=518549",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:34:33.452Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:18:24.354Z",
+      "status": "finished",
       "participants": [
         {
           "rank": null,
@@ -219,9 +219,9 @@
     {
       "id": "518574",
       "url": "https://boardgamearena.com/tournament?id=518574",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:34:40.392Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:18:30.586Z",
+      "status": "planned",
       "participants": [
         {
           "rank": null,
@@ -310,9 +310,9 @@
     {
       "id": "518581",
       "url": "https://boardgamearena.com/tournament?id=518581",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:34:47.145Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:18:36.892Z",
+      "status": "planned",
       "participants": [
         {
           "rank": null,
@@ -397,7 +397,7 @@
       "id": "518544",
       "url": "https://boardgamearena.com/tournament?id=518544",
       "last_status": null,
-      "last_checked": "2026-04-30T04:34:53.302Z",
+      "last_checked": "2026-04-30T08:18:42.717Z",
       "status": "finished",
       "participants": [
         {
@@ -488,7 +488,7 @@
       "id": "518569",
       "url": "https://boardgamearena.com/tournament?id=518569",
       "last_status": null,
-      "last_checked": "2026-04-30T04:34:59.617Z",
+      "last_checked": "2026-04-30T08:18:48.367Z",
       "status": "finished",
       "participants": [
         {
@@ -579,7 +579,7 @@
       "id": "518571",
       "url": "https://boardgamearena.com/tournament?id=518571",
       "last_status": null,
-      "last_checked": "2026-04-30T04:35:05.855Z",
+      "last_checked": "2026-04-30T08:18:53.893Z",
       "status": "finished",
       "participants": [
         {
@@ -675,7 +675,7 @@
       "id": "518584",
       "url": "https://boardgamearena.com/tournament?id=518584",
       "last_status": null,
-      "last_checked": "2026-04-30T04:35:12.660Z",
+      "last_checked": "2026-04-30T08:19:00.263Z",
       "status": "finished",
       "participants": [
         {
@@ -755,9 +755,9 @@
     {
       "id": "518551",
       "url": "https://boardgamearena.com/tournament?id=518551",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:35:19.390Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:19:05.915Z",
+      "status": "finished",
       "participants": [
         {
           "rank": 1,
@@ -852,7 +852,7 @@
       "id": "518577",
       "url": "https://boardgamearena.com/tournament?id=518577",
       "last_status": null,
-      "last_checked": "2026-04-30T04:35:25.991Z",
+      "last_checked": "2026-04-30T08:19:11.541Z",
       "status": "finished",
       "participants": [
         {
@@ -938,7 +938,7 @@
       "id": "554870",
       "url": "https://boardgamearena.com/tournament?id=554870",
       "last_status": null,
-      "last_checked": "2026-04-30T04:35:32.175Z",
+      "last_checked": "2026-04-30T08:19:17.222Z",
       "status": "planned",
       "participants": [
         {
@@ -999,7 +999,7 @@
       "id": "554868",
       "url": "https://boardgamearena.com/tournament?id=554868",
       "last_status": null,
-      "last_checked": "2026-04-30T04:35:38.503Z",
+      "last_checked": "2026-04-30T08:19:22.862Z",
       "status": "planned",
       "participants": [
         {
@@ -1054,9 +1054,9 @@
     {
       "id": "538858",
       "url": "https://boardgamearena.com/tournament?id=538858",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:35:44.666Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:19:28.489Z",
+      "status": "finished",
       "participants": [
         {
           "rank": null,
@@ -1120,9 +1120,9 @@
     {
       "id": "538885",
       "url": "https://boardgamearena.com/tournament?id=538885",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:35:51.552Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:19:34.683Z",
+      "status": "planned",
       "participants": [
         {
           "rank": null,
@@ -1186,9 +1186,9 @@
     {
       "id": "538888",
       "url": "https://boardgamearena.com/tournament?id=538888",
-      "last_status": null,
-      "last_checked": "2026-04-30T04:35:57.819Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-04-30T08:19:40.340Z",
+      "status": "finished",
       "participants": [
         {
           "rank": null,
@@ -1263,7 +1263,7 @@
       "id": "528687",
       "url": "https://boardgamearena.com/tournament?id=528687",
       "last_status": null,
-      "last_checked": "2026-04-30T04:36:04.004Z",
+      "last_checked": "2026-04-30T08:19:45.971Z",
       "status": "finished",
       "participants": [
         {
@@ -1319,7 +1319,7 @@
       "id": "511982",
       "url": "https://boardgamearena.com/tournament?id=511982",
       "last_status": null,
-      "last_checked": "2026-04-30T04:36:10.144Z",
+      "last_checked": "2026-04-30T08:19:51.647Z",
       "status": "finished",
       "participants": [
         {
