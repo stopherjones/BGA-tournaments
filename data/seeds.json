@@ -1,15 +1,16 @@
 {
   "tournaments": [
-    "https://boardgamearena.com/tournament?id=554870",
-    "https://boardgamearena.com/tournament?id=554868",
-    "https://boardgamearena.com/tournament?id=545598",
-    "https://boardgamearena.com/tournament?id=538888",
-    "https://boardgamearena.com/tournament?id=538885",
-    "https://boardgamearena.com/tournament?id=538858",
-    "https://boardgamearena.com/tournament?id=528687",
+    "--- Around the World ---",
     "https://boardgamearena.com/tournament?id=528477",
     "https://boardgamearena.com/tournament?id=528478",
-    "https://boardgamearena.com/tournament?id=519244",
+    "https://boardgamearena.com/tournament?id=554870",
+    "https://boardgamearena.com/tournament?id=554868",
+    "https://boardgamearena.com/tournament?id=538858",
+    "https://boardgamearena.com/tournament?id=538885",    
+    "https://boardgamearena.com/tournament?id=538888",
+    "https://boardgamearena.com/tournament?id=511982",
+    "https://boardgamearena.com/tournament?id=528687",
+    "--- TBA Seasonal 2026-1 ---", 
     "https://boardgamearena.com/tournament?id=518587",
     "https://boardgamearena.com/tournament?id=518549",
     "https://boardgamearena.com/tournament?id=518574",
@@ -20,9 +21,12 @@
     "https://boardgamearena.com/tournament?id=518584",
     "https://boardgamearena.com/tournament?id=518551",
     "https://boardgamearena.com/tournament?id=518577",
-    "https://boardgamearena.com/tournament?id=511982",
+    "--- Fight Club ---",
+    "https://boardgamearena.com/tournament?id=545598",
+    "--- Abstract Games S5 ---",
     "https://boardgamearena.com/tournament?id=519247",
     "https://boardgamearena.com/tournament?id=519246",
-    "https://boardgamearena.com/tournament?id=519245"
+    "https://boardgamearena.com/tournament?id=519245",
+    "https://boardgamearena.com/tournament?id=519244"
   ]
 }
