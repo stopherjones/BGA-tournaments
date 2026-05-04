@@ -7,7 +7,7 @@
       "id": "528477",
       "url": "https://boardgamearena.com/tournament?id=528477",
       "last_status": "finished",
-      "last_checked": "2026-05-03T04:42:31.598Z",
+      "last_checked": "2026-05-04T04:42:32.045Z",
       "status": "in_progress",
       "participants": [
         {
@@ -73,7 +73,7 @@
       "id": "528478",
       "url": "https://boardgamearena.com/tournament?id=528478",
       "last_status": "finished",
-      "last_checked": "2026-05-03T04:42:37.236Z",
+      "last_checked": "2026-05-04T04:42:38.167Z",
       "status": "in_progress",
       "participants": [
         {
@@ -139,7 +139,7 @@
       "id": "518549",
       "url": "https://boardgamearena.com/tournament?id=518549",
       "last_status": "in_progress",
-      "last_checked": "2026-05-03T04:42:42.856Z",
+      "last_checked": "2026-05-04T04:42:44.431Z",
       "status": "finished",
       "participants": [
         {
@@ -220,7 +220,7 @@
       "id": "518574",
       "url": "https://boardgamearena.com/tournament?id=518574",
       "last_status": "planned",
-      "last_checked": "2026-05-03T04:42:49.221Z",
+      "last_checked": "2026-05-04T04:42:51.361Z",
       "status": "in_progress",
       "participants": [
         {
@@ -311,7 +311,7 @@
       "id": "518581",
       "url": "https://boardgamearena.com/tournament?id=518581",
       "last_status": "planned",
-      "last_checked": "2026-05-03T04:42:55.419Z",
+      "last_checked": "2026-05-04T04:42:58.347Z",
       "status": "in_progress",
       "participants": [
         {
@@ -397,7 +397,7 @@
       "id": "518544",
       "url": "https://boardgamearena.com/tournament?id=518544",
       "last_status": null,
-      "last_checked": "2026-05-03T04:43:00.948Z",
+      "last_checked": "2026-05-04T04:43:04.498Z",
       "status": "finished",
       "participants": [
         {
@@ -488,7 +488,7 @@
       "id": "518569",
       "url": "https://boardgamearena.com/tournament?id=518569",
       "last_status": null,
-      "last_checked": "2026-05-03T04:43:06.546Z",
+      "last_checked": "2026-05-04T04:43:10.797Z",
       "status": "finished",
       "participants": [
         {
@@ -579,7 +579,7 @@
       "id": "518571",
       "url": "https://boardgamearena.com/tournament?id=518571",
       "last_status": null,
-      "last_checked": "2026-05-03T04:43:12.177Z",
+      "last_checked": "2026-05-04T04:43:17.046Z",
       "status": "finished",
       "participants": [
         {
@@ -675,7 +675,7 @@
       "id": "518584",
       "url": "https://boardgamearena.com/tournament?id=518584",
       "last_status": null,
-      "last_checked": "2026-05-03T04:43:18.326Z",
+      "last_checked": "2026-05-04T04:43:23.889Z",
       "status": "finished",
       "participants": [
         {
@@ -756,7 +756,7 @@
       "id": "518551",
       "url": "https://boardgamearena.com/tournament?id=518551",
       "last_status": "in_progress",
-      "last_checked": "2026-05-03T04:43:23.929Z",
+      "last_checked": "2026-05-04T04:43:30.057Z",
       "status": "finished",
       "participants": [
         {
@@ -852,7 +852,7 @@
       "id": "518577",
       "url": "https://boardgamearena.com/tournament?id=518577",
       "last_status": null,
-      "last_checked": "2026-05-03T04:43:29.526Z",
+      "last_checked": "2026-05-04T04:43:36.218Z",
       "status": "finished",
       "participants": [
         {
@@ -938,7 +938,7 @@
       "id": "554870",
       "url": "https://boardgamearena.com/tournament?id=554870",
       "last_status": null,
-      "last_checked": "2026-05-03T04:43:35.024Z",
+      "last_checked": "2026-05-04T04:43:42.546Z",
       "status": "planned",
       "participants": [
         {
@@ -1005,6 +1005,11 @@
           "rank": null,
           "name": "Arjo14",
           "active": true
+        },
+        {
+          "rank": null,
+          "name": "ren v hoek",
+          "active": true
         }
       ],
       "game_name": "Jaipur",
@@ -1014,7 +1019,7 @@
       "id": "554868",
       "url": "https://boardgamearena.com/tournament?id=554868",
       "last_status": null,
-      "last_checked": "2026-05-03T04:43:40.571Z",
+      "last_checked": "2026-05-04T04:43:48.817Z",
       "status": "planned",
       "participants": [
         {
@@ -1074,6 +1079,11 @@
         },
         {
           "rank": null,
+          "name": "ren v hoek",
+          "active": true
+        },
+        {
+          "rank": null,
           "name": "Silene",
           "active": true
         }
@@ -1085,7 +1095,7 @@
       "id": "538858",
       "url": "https://boardgamearena.com/tournament?id=538858",
       "last_status": "finished",
-      "last_checked": "2026-05-03T04:43:46.114Z",
+      "last_checked": "2026-05-04T04:43:55.020Z",
       "status": "in_progress",
       "participants": [
         {
@@ -1151,7 +1161,7 @@
       "id": "538885",
       "url": "https://boardgamearena.com/tournament?id=538885",
       "last_status": "planned",
-      "last_checked": "2026-05-03T04:43:52.246Z",
+      "last_checked": "2026-05-04T04:44:01.771Z",
       "status": "in_progress",
       "participants": [
         {
@@ -1186,7 +1196,17 @@
         },
         {
           "rank": null,
+          "name": "Bleedingriver",
+          "active": true
+        },
+        {
+          "rank": null,
           "name": "Niall",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
           "active": true
         },
         {
@@ -1198,16 +1218,6 @@
           "rank": null,
           "name": "LaurieW917",
           "active": true
-        },
-        {
-          "rank": null,
-          "name": "TacCOIG",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Bleedingriver",
-          "active": true
         }
       ],
       "game_name": "Nanga Parbat",
@@ -1217,7 +1227,7 @@
       "id": "538888",
       "url": "https://boardgamearena.com/tournament?id=538888",
       "last_status": "finished",
-      "last_checked": "2026-05-03T04:43:57.872Z",
+      "last_checked": "2026-05-04T04:44:07.969Z",
       "status": "in_progress",
       "participants": [
         {
@@ -1293,7 +1303,7 @@
       "id": "528687",
       "url": "https://boardgamearena.com/tournament?id=528687",
       "last_status": null,
-      "last_checked": "2026-05-03T04:44:03.443Z",
+      "last_checked": "2026-05-04T04:44:14.133Z",
       "status": "finished",
       "participants": [
         {
@@ -1349,7 +1359,7 @@
       "id": "511982",
       "url": "https://boardgamearena.com/tournament?id=511982",
       "last_status": null,
-      "last_checked": "2026-05-03T04:44:08.961Z",
+      "last_checked": "2026-05-04T04:44:20.622Z",
       "status": "finished",
       "participants": [
         {
@@ -1430,7 +1440,7 @@
       "id": "545598",
       "url": "https://boardgamearena.com/tournament?id=545598",
       "last_status": null,
-      "last_checked": "2026-05-03T04:44:15.151Z",
+      "last_checked": "2026-05-04T04:44:27.324Z",
       "status": "in_progress",
       "participants": [
         {
@@ -1475,32 +1485,32 @@
     {
       "id": "519244",
       "url": "https://boardgamearena.com/tournament?id=519244",
-      "last_status": null,
-      "last_checked": "2026-05-03T04:44:20.687Z",
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "last_checked": "2026-05-04T04:44:33.676Z",
+      "status": "finished",
       "participants": [
         {
-          "rank": null,
-          "name": "stopherjones",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "drharris",
-          "active": true
-        },
-        {
-          "rank": null,
+          "rank": 1,
           "name": "Salvidrim",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 2,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": 4,
           "name": "Kurorac",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 4,
           "name": "Zozoken",
           "active": true
         }
@@ -1512,7 +1522,7 @@
       "id": "518587",
       "url": "https://boardgamearena.com/tournament?id=518587",
       "last_status": null,
-      "last_checked": "2026-05-03T04:44:26.193Z",
+      "last_checked": "2026-05-04T04:44:39.880Z",
       "status": "finished",
       "participants": [
         {
@@ -1598,7 +1608,7 @@
       "id": "519247",
       "url": "https://boardgamearena.com/tournament?id=519247",
       "last_status": null,
-      "last_checked": "2026-05-03T04:44:31.737Z",
+      "last_checked": "2026-05-04T04:44:46.183Z",
       "status": "finished",
       "participants": [
         {
@@ -1629,7 +1639,7 @@
       "id": "519246",
       "url": "https://boardgamearena.com/tournament?id=519246",
       "last_status": null,
-      "last_checked": "2026-05-03T04:44:37.236Z",
+      "last_checked": "2026-05-04T04:44:52.489Z",
       "status": "finished",
       "participants": [
         {
@@ -1660,7 +1670,7 @@
       "id": "519245",
       "url": "https://boardgamearena.com/tournament?id=519245",
       "last_status": null,
-      "last_checked": "2026-05-03T04:44:42.868Z",
+      "last_checked": "2026-05-04T04:44:58.961Z",
       "status": "finished",
       "participants": [
         {
