@@ -42,7 +42,6 @@
     header h1 { font-size: 1.5rem; font-weight: 700; }
     header .logo { font-size: 2rem; }
     header .subtitle { color: var(--muted); font-size: 0.9rem; margin-top: 2px; }
-    header .last-updated { margin-left: auto; font-size: 0.8rem; color: var(--muted); text-align: right; }
 
     main { max-width: 960px; margin: 0 auto; padding: 32px 24px; }
 
@@ -208,7 +207,6 @@
     <h1>BGA Tournament Tracker</h1>
     <div class="subtitle">Board Game Arena · updates daily at 1am UTC</div>
   </div>
-  <div class="last-updated" id="last-updated"></div>
 </header>
 
 <main>
@@ -254,18 +252,6 @@
     .then(r => r.json())
     .then(data => {
       allTournaments = data.tournaments;
-
-      // Last-updated timestamp (most recent check across all tournaments)
-      const dates = allTournaments
-        .map(t => t.last_checked)
-        .filter(Boolean)
-        .sort();
-      if (dates.length) {
-        const d = new Date(dates[dates.length - 1]);
-        document.getElementById('last-updated').innerHTML =
-          `Last checked<br>${d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' })}`;
-      }
-
       initTitleFilter();
       render();
     })
@@ -307,9 +293,6 @@
     const status   = t.status || 'unknown';
     const icon     = STATUS_ICON[status];
     const label    = STATUS_TEXT[status];
-    const checked  = t.last_checked
-      ? new Date(t.last_checked).toLocaleString(undefined, { dateStyle: 'short', timeStyle: 'short' })
-      : 'never';
 
     let rankingSection = '';
     if (t.participants && t.participants.length > 0) {

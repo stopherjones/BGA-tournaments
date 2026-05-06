@@ -38,7 +38,6 @@ const STATUS_LABEL = {
       tournament.participants = result.participants;
       tournament.game_name    = result.game_name || tournament.game_name;
       tournament.title        = result.title     || tournament.title;
-      tournament.last_checked = new Date().toISOString();
 
       console.log(`  Status: ${result.status} | Players: ${result.participants.length}`);
 
@@ -79,7 +78,7 @@ function mergeSeedsIntoData(data) {
     const existing = byId.get(id);
 
     if (!existing) {
-      const t = { id, url, last_status: null, last_checked: null, status: null, participants: [] };
+      const t = { id, url, last_status: null, status: null, participants: [] };
       data.tournaments.push(t);
       byId.set(id, t);
     } else if (!existing.url) {
