@@ -937,9 +937,9 @@
     {
       "id": "554870",
       "url": "https://boardgamearena.com/tournament?id=554870",
-      "last_status": null,
+      "last_status": "planned",
       "last_checked": "2026-05-06T04:36:49.979Z",
-      "status": "planned",
+      "status": "in_progress",
       "participants": [
         {
           "rank": null,
@@ -948,12 +948,12 @@
         },
         {
           "rank": null,
-          "name": "TacCOIG",
+          "name": "Kurorac",
           "active": true
         },
         {
           "rank": null,
-          "name": "Niall",
+          "name": "drharris",
           "active": true
         },
         {
@@ -963,12 +963,27 @@
         },
         {
           "rank": null,
+          "name": "havensand",
+          "active": true
+        },
+        {
+          "rank": null,
           "name": "VemRD",
           "active": true
         },
         {
           "rank": null,
-          "name": "Cheery Dog",
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "ren v hoek",
           "active": true
         },
         {
@@ -978,42 +993,7 @@
         },
         {
           "rank": null,
-          "name": "Kurorac",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "drharris",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "daniinnc",
-          "active": true
-        },
-        {
-          "rank": null,
           "name": "stopherjones",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Salvidrim",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "havensand",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Arjo14",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "ren v hoek",
           "active": true
         }
       ],
@@ -1023,28 +1003,13 @@
     {
       "id": "554868",
       "url": "https://boardgamearena.com/tournament?id=554868",
-      "last_status": null,
+      "last_status": "planned",
       "last_checked": "2026-05-06T04:36:56.357Z",
-      "status": "planned",
+      "status": "in_progress",
       "participants": [
         {
           "rank": null,
           "name": "Arjo14",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "stopherjones",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "TacCOIG",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Salvidrim",
           "active": true
         },
         {
@@ -1054,37 +1019,7 @@
         },
         {
           "rank": null,
-          "name": "VemRD",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Zozoken",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "daniinnc",
-          "active": true
-        },
-        {
-          "rank": null,
           "name": "Cheery Dog",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "havensand",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Kurorac",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Niall",
           "active": true
         },
         {
@@ -1094,7 +1029,52 @@
         },
         {
           "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "VemRD",
+          "active": true
+        },
+        {
+          "rank": null,
           "name": "Silene",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Zozoken",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "havensand",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "daniinnc",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Niall",
           "active": true
         }
       ],
