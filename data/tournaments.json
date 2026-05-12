@@ -1216,73 +1216,73 @@
     {
       "id": "538888",
       "url": "https://boardgamearena.com/tournament?id=538888",
-      "last_status": "finished",
+      "last_status": "in_progress",
       "last_checked": "2026-05-06T04:37:15.313Z",
-      "status": "in_progress",
+      "status": "finished",
       "participants": [
         {
-          "rank": null,
+          "rank": 1,
           "name": "Silene",
           "active": true
         },
         {
-          "rank": null,
-          "name": "VemRD",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "LaurieW917",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Bleedingriver",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "stopherjones",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Cheery Dog",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "drharris",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Niall",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Sharon F",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "TacCOIG",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "ren v hoek",
-          "active": true
-        },
-        {
-          "rank": null,
+          "rank": 2,
           "name": "Salvidrim",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 3,
+          "name": "stopherjones",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "Cheery Dog",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Niall",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "Sharon F",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "ren v hoek",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 7,
           "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "LaurieW917",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Bleedingriver",
           "active": false
         }
       ],
@@ -1686,6 +1686,216 @@
       ],
       "game_name": "Pylos",
       "title": "TBA Abstract Games Club S5"
+    },
+    {
+      "id": "560721",
+      "url": "https://boardgamearena.com/tournament?id=560721",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        }
+      ],
+      "game_name": "Flowers",
+      "title": "TBA Abstract Games Club S6"
+    },
+    {
+      "id": "560720",
+      "url": "https://boardgamearena.com/tournament?id=560720",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        }
+      ],
+      "game_name": "Bug game",
+      "title": "TBA Abstract Games Club S6"
+    },
+    {
+      "id": "560719",
+      "url": "https://boardgamearena.com/tournament?id=560719",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        }
+      ],
+      "game_name": "Finity",
+      "title": "TBA Abstract Games Club S6"
+    },
+    {
+      "id": "560718",
+      "url": "https://boardgamearena.com/tournament?id=560718",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "Arjo14",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        }
+      ],
+      "game_name": "Abalone",
+      "title": "TBA Abstract Games Club S6"
+    },
+    {
+      "id": "560717",
+      "url": "https://boardgamearena.com/tournament?id=560717",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        }
+      ],
+      "game_name": "Circle of Life",
+      "title": "TBA Abstract Games Club S6"
+    },
+    {
+      "id": "560716",
+      "url": "https://boardgamearena.com/tournament?id=560716",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        }
+      ],
+      "game_name": "Bobail",
+      "title": "TBA Abstract Games Club S6"
+    },
+    {
+      "id": "560715",
+      "url": "https://boardgamearena.com/tournament?id=560715",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        }
+      ],
+      "game_name": "Strands",
+      "title": "TBA Abstract Games Club S6"
     }
   ]
 }
