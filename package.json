@@ -7,6 +7,7 @@
     "test-scrape": "node scripts/scrape.js"
   },
   "dependencies": {
+    "dotenv": "^17.4.2",
     "nodemailer": "^6.9.14",
     "playwright": "^1.44.0"
   },

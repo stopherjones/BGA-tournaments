@@ -2,9 +2,11 @@
  * BGA Tournament Tracker – scrape.js
  */
 
+require('dotenv').config();
 const { chromium } = require('playwright');
 const fs           = require('fs');
 const path         = require('path');
+const nodemailer   = require('nodemailer');
 
 // ── Paths ─────────────────────────────────────────────────────────────────────
 const DATA_FILE = path.join(__dirname, '../data/tournaments.json');
@@ -23,6 +25,18 @@ const STATUS_LABEL = {
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   mergeSeedsIntoData(data);
   const changes = [];
+  const notifyEmail = process.env.NOTIFY_EMAIL || data.config.notify_email;
+
+  // Setup email transporter (configure SMTP settings via environment variables)
+  const transporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST || 'smtp.example.com',
+    port: parseInt(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_SECURE === 'true',
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASS
+    }
+  });
 
   const browser = await chromium.launch({ headless: true });
   console.log('Browser launched');
@@ -38,6 +52,7 @@ const STATUS_LABEL = {
       tournament.participants = result.participants;
       tournament.game_name    = result.game_name || tournament.game_name;
       tournament.title        = result.title     || tournament.title;
+      tournament.last_checked = new Date().toISOString();
 
       console.log(`  Status: ${result.status} | Players: ${result.participants.length}`);
 
@@ -58,10 +73,47 @@ const STATUS_LABEL = {
 
   if (changes.length > 0) {
     console.log(`\n📢  Detected ${changes.length} status changes.`);
+    await sendStatusChangeEmails(changes, notifyEmail, transporter);
   } else {
     console.log('\nNo status changes detected.');
   }
 })();
+
+async function sendStatusChangeEmails(changes, notifyEmail, transporter) {
+  for (const change of changes) {
+    const { tournament, from, to } = change;
+    const title = tournament.title || tournament.game_name || `Tournament ${tournament.id}`;
+
+    if (from === 'planned' && to === 'in_progress') {
+      const subject = `Tournament Started: ${title}`;
+      const text = `The tournament "${title}" has started (changed from ${from} to ${to}).\n\nURL: ${tournament.url}`;
+      await sendEmail(transporter, notifyEmail, subject, text);
+    } else if (from === 'in_progress' && to === 'finished') {
+      const subject = `Tournament Finished: ${title}`;
+      const participantsText = tournament.participants
+        .filter(p => p.rank !== null)
+        .sort((a, b) => a.rank - b.rank)
+        .map(p => `${p.rank}: ${p.name}`)
+        .join('\n');
+      const text = `The tournament "${title}" has finished (changed from ${from} to ${to}).\n\nFinal Rankings:\n${participantsText}\n\nURL: ${tournament.url}`;
+      await sendEmail(transporter, notifyEmail, subject, text);
+    }
+  }
+}
+
+async function sendEmail(transporter, to, subject, text) {
+  try {
+    await transporter.sendMail({
+      from: transporter.options.auth.user,
+      to,
+      subject,
+      text
+    });
+    console.log(`📧 Email sent: ${subject}`);
+  } catch (error) {
+    console.error(`❌ Failed to send email: ${error.message}`);
+  }
+}
 
 function mergeSeedsIntoData(data) {
   const seeds = loadSeeds();

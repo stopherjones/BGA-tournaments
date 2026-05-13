@@ -43,9 +43,40 @@ On each run, the scraper will merge seeds into `data/tournaments.json` and popul
 Go to **Settings → Pages** and set:
 - Source: **GitHub Actions**
 
-### 4. Run it manually the first time
+### 5. Configure Email Notifications (Optional)
 
-Go to **Actions → Check BGA Tournaments → Run workflow** to trigger an immediate run and verify everything works.
+To receive email alerts when tournaments change status:
+
+#### Option A: Local Development (.env file)
+1. Copy `.env.example` to `.env` and fill in your SMTP details:
+   ```bash
+   cp .env.example .env
+   ```
+
+2. For Gmail:
+   - Enable 2FA on your Google account
+   - Generate an App Password: https://support.google.com/accounts/answer/185833
+   - Use your Gmail address as SMTP_USER and the app password as SMTP_PASS
+
+3. Update `data/tournaments.json` with your email address:
+   ```json
+   {
+     "config": {
+       "notify_email": "your@email.com"
+     }
+   }
+   ```
+
+#### Option B: GitHub Actions (Recommended for Automation)
+Set these secrets in your repository settings (Settings → Secrets and variables → Actions):
+
+- `NOTIFY_EMAIL`: Your email address to receive notifications
+- `SMTP_HOST`: Your SMTP server (e.g., `smtp.gmail.com`)
+- `SMTP_PORT`: SMTP port (usually `587`)
+- `SMTP_USER`: Your email address
+- `SMTP_PASS`: Your email password or app password
+
+The automated daily runs will use these secrets securely.
 
 ---
 
