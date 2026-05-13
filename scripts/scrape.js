@@ -27,6 +27,11 @@ const STATUS_LABEL = {
   const changes = [];
   const notifyEmail = process.env.NOTIFY_EMAIL || data.config.notify_email;
 
+  // Track newly added tournaments (those without a last_checked timestamp)
+  const newTournaments = data.tournaments
+    .filter(t => !t.last_checked)
+    .map(t => t.id);
+
   // Setup email transporter (configure SMTP settings via environment variables)
   const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.example.com',
@@ -61,6 +66,12 @@ const STATUS_LABEL = {
         changes.push({ tournament, from: prevStatus, to: result.status });
         console.log(`  ⚡ Status changed: ${prevStatus} → ${result.status}`);
       }
+
+      // Check if this is a newly added tournament
+      if (newTournaments.includes(tournament.id)) {
+        changes.push({ tournament, isNew: true, status: result.status });
+        console.log(`  ✨ New tournament added: ${result.status}`);
+      }
     } catch (err) {
       console.error(`  ✗ Error scraping ${tournament.url}:`, err.message);
     }
@@ -72,19 +83,27 @@ const STATUS_LABEL = {
   console.log('\n✓ data/tournaments.json updated');
 
   if (changes.length > 0) {
-    console.log(`\n📢  Detected ${changes.length} status changes.`);
+    console.log(`\n📢  Detected ${changes.length} updates (status changes + new tournaments).`);
     await sendStatusChangeEmails(changes, notifyEmail, transporter);
   } else {
-    console.log('\nNo status changes detected.');
+    console.log('\nNo status changes or new tournaments detected.');
   }
 })();
 
 async function sendStatusChangeEmails(changes, notifyEmail, transporter) {
   for (const change of changes) {
-    const { tournament, from, to } = change;
+    const { tournament, from, to, isNew, status } = change;
     const title = tournament.title || tournament.game_name || `Tournament ${tournament.id}`;
 
-    if (from === 'planned' && to === 'in_progress') {
+    if (isNew) {
+      // New tournament added
+      const subject = `New Tournament Added: ${title}`;
+      const gameInfo = tournament.game_name ? `Game: ${tournament.game_name}\n` : '';
+      const statusInfo = `Status: ${status}\n`;
+      const playerCount = tournament.participants.length > 0 ? `Participants: ${tournament.participants.length}\n` : '';
+      const text = `A new tournament has been added to your tracking list!\n\n${gameInfo}${statusInfo}${playerCount}\nURL: ${tournament.url}`;
+      await sendEmail(transporter, notifyEmail, subject, text);
+    } else if (from === 'planned' && to === 'in_progress') {
       const subject = `Tournament Started: ${title}`;
       const text = `The tournament "${title}" has started (changed from ${from} to ${to}).\n\nURL: ${tournament.url}`;
       await sendEmail(transporter, notifyEmail, subject, text);
