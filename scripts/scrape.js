@@ -25,7 +25,11 @@ const STATUS_LABEL = {
   const data = JSON.parse(fs.readFileSync(DATA_FILE, 'utf8'));
   mergeSeedsIntoData(data);
   const changes = [];
-  const notifyEmail = process.env.NOTIFY_EMAIL || data.config.notify_email;
+  // Support multiple emails separated by commas (e.g., "email1@example.com,email2@example.com")
+  const notifyEmails = (process.env.NOTIFY_EMAIL || data.config.notify_email || '')
+    .split(',')
+    .map(email => email.trim())
+    .filter(email => email.length > 0);
 
   // Track newly added tournaments (those without a last_checked timestamp)
   const newTournaments = data.tournaments
@@ -84,13 +88,17 @@ const STATUS_LABEL = {
 
   if (changes.length > 0) {
     console.log(`\n📢  Detected ${changes.length} updates (status changes + new tournaments).`);
-    await sendStatusChangeEmails(changes, notifyEmail, transporter);
+    if (notifyEmails.length > 0) {
+      await sendStatusChangeEmails(changes, notifyEmails, transporter);
+    } else {
+      console.log('⚠️  No email addresses configured. Skipping notifications.');
+    }
   } else {
     console.log('\nNo status changes or new tournaments detected.');
   }
 })();
 
-async function sendStatusChangeEmails(changes, notifyEmail, transporter) {
+async function sendStatusChangeEmails(changes, notifyEmails, transporter) {
   for (const change of changes) {
     const { tournament, from, to, isNew, status } = change;
     const title = tournament.title || tournament.game_name || `Tournament ${tournament.id}`;
@@ -102,11 +110,11 @@ async function sendStatusChangeEmails(changes, notifyEmail, transporter) {
       const statusInfo = `Status: ${status}\n`;
       const playerCount = tournament.participants.length > 0 ? `Participants: ${tournament.participants.length}\n` : '';
       const text = `A new tournament has been added to your tracking list!\n\n${gameInfo}${statusInfo}${playerCount}\nURL: ${tournament.url}`;
-      await sendEmail(transporter, notifyEmail, subject, text);
+      await sendEmail(transporter, notifyEmails, subject, text);
     } else if (from === 'planned' && to === 'in_progress') {
       const subject = `Tournament Started: ${title}`;
       const text = `The tournament "${title}" has started (changed from ${from} to ${to}).\n\nURL: ${tournament.url}`;
-      await sendEmail(transporter, notifyEmail, subject, text);
+      await sendEmail(transporter, notifyEmails, subject, text);
     } else if (from === 'in_progress' && to === 'finished') {
       const subject = `Tournament Finished: ${title}`;
       const participantsText = tournament.participants
@@ -115,20 +123,25 @@ async function sendStatusChangeEmails(changes, notifyEmail, transporter) {
         .map(p => `${p.rank}: ${p.name}`)
         .join('\n');
       const text = `The tournament "${title}" has finished (changed from ${from} to ${to}).\n\nFinal Rankings:\n${participantsText}\n\nURL: ${tournament.url}`;
-      await sendEmail(transporter, notifyEmail, subject, text);
+      await sendEmail(transporter, notifyEmails, subject, text);
     }
   }
 }
 
-async function sendEmail(transporter, to, subject, text) {
+async function sendEmail(transporter, recipients, subject, text) {
   try {
+    // recipients can be a single email, array of emails, or comma-separated string
+    const toField = Array.isArray(recipients) ? recipients.join(', ') : recipients;
+    
     await transporter.sendMail({
       from: transporter.options.auth.user,
-      to,
+      to: toField,
       subject,
       text
     });
-    console.log(`📧 Email sent: ${subject}`);
+    
+    const recipientCount = Array.isArray(recipients) ? recipients.length : 1;
+    console.log(`📧 Email sent to ${recipientCount} recipient(s): ${subject}`);
   } catch (error) {
     console.error(`❌ Failed to send email: ${error.message}`);
   }

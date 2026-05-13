@@ -70,13 +70,19 @@ To receive email alerts when tournaments change status:
 #### Option B: GitHub Actions (Recommended for Automation)
 Set these secrets in your repository settings (Settings → Secrets and variables → Actions):
 
-- `NOTIFY_EMAIL`: Your email address to receive notifications
+- `NOTIFY_EMAIL`: Email address(es) to receive notifications. For multiple recipients, use a comma-separated list: `email1@example.com,email2@example.com,email3@example.com`
 - `SMTP_HOST`: Your SMTP server (e.g., `smtp.gmail.com`)
 - `SMTP_PORT`: SMTP port (usually `587`)
 - `SMTP_USER`: Your email address
 - `SMTP_PASS`: Your email password or app password
 
 The automated daily runs will use these secrets securely.
+
+**Multiple Recipients Example:**
+```
+NOTIFY_EMAIL = user1@gmail.com,user2@gmail.com,user3@example.com
+```
+Each user will receive their own copy of the notification email.
 
 ---
 
