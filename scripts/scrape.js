@@ -207,7 +207,17 @@ async function scrapeTournament(browser, url) {
   const page = await browser.newPage();
   await page.route('**/*.{png,jpg,jpeg,gif,webp,svg,woff,woff2,ttf}', r => r.abort());
   await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
+  
+  // Give background web sockets and UI frames a brief moment to stabilize
   await page.waitForTimeout(3000);
+
+  // Fallback structural target verification
+  await page.waitForSelector('.playername, span.playername, a.playername', { timeout: 5000 }).catch(() => {});
+
+  // Fast scrolling gesture to trigger lazy components if rendering structural segments late
+  await page.evaluate(() => window.scrollTo(0, 400));
+  await page.waitForTimeout(500);
+  await page.evaluate(() => window.scrollTo(0, 0));
 
   const result = await page.evaluate((currentUrl) => {
     const text    = el => (el ? el.textContent.trim() : '');
@@ -228,39 +238,48 @@ async function scrapeTournament(browser, url) {
       title = smallText; game_name = largeText;
     }
 
-    // ── Status ───────────────────────────────────────────────────────────────
+    // ── Robust Status Detection ──────────────────────────────────────────────
     let status = 'unknown';
 
-    const finishedSpan = find('span.text-xl.text-center.leading-tight.line-clamp-2') || find('span.line-clamp-2');
-    const finishedText = text(finishedSpan).toLowerCase();
+    // Scan an expansive text surface area from primary header nodes
+    const statusElements = [
+      find('#tournament_status'),
+      find('.tournament_header'),
+      find('#page-title'),
+      find('.text-xl.text-center'),
+      ...findAll('div.text-xl'),
+      ...findAll('span.line-clamp-2'),
+      ...findAll('[class*="status"]'),
+      ...findAll('[class*="state"]')
+    ];
 
-    const progressDiv  = find('div.text-xl.svelte-1yitbuo') || find('div.text-xl');
-    const progressText = text(progressDiv).toLowerCase();
+    const combinedText = statusElements
+      .filter(Boolean)
+      .map(el => el.textContent.toLowerCase())
+      .join(' ');
 
-    if (finishedText.includes('finished')) {
+    if (combinedText.includes('finished') || combinedText.includes('completed') || combinedText.includes('over')) {
       status = 'finished';
-    } else if (progressText.includes('started')) {
+    } else if (combinedText.includes('in progress') || combinedText.includes('started') || combinedText.includes('ongoing') || combinedText.includes('running')) {
       status = 'in_progress';
-    } else if (progressText.includes('starts')) {
+    } else if (combinedText.includes('starts') || combinedText.includes('planned') || combinedText.includes('scheduled') || combinedText.includes('registration open')) {
       status = 'planned';
     }
 
     // ── Participants ─────────────────────────────────────────────────────────
-    //
-    // Normalize a player name: replaces invisible/non-standard Unicode
-    // whitespace that a plain .trim() would leave behind, then collapses any
-    // remaining whitespace runs to a single space.
     const normalizeName = str =>
       str
-        .replace(/[\u00A0\u200B\u200C\u200D\uFEFF]/g, ' ') // common invisible chars
+        .replace(/[\u00A0\u200B\u200C\u200D\uFEFF]/g, ' ') // clear invisible non-breaking spaces
         .replace(/\s+/g, ' ')
         .trim();
 
     const participants = [];
     const seen         = new Set();
 
+    // Catch players nested inside anchors or spans across brackets and player grids
+    const playerSelector = 'span.playername, a.playername, .playername, [class*="playername"]';
+
     // ── Pass 1: ranked containers ────────────────────────────────────────────
-    // Players inside [data-rank-start] elements carry explicit position info.
     const rankContainers = findAll('[data-rank-start]');
     if (rankContainers.length > 0) {
       let lastAssignedRank = 0;
@@ -270,7 +289,7 @@ async function scrapeTournament(browser, url) {
         let rawRank = parseInt(container.getAttribute('data-rank-start'), 10);
         if (isNaN(rawRank)) rawRank = 0;
 
-        const scopedPlayers = [...container.querySelectorAll('span.playername')]
+        const scopedPlayers = [...container.querySelectorAll(playerSelector)]
           .map(el => ({ el, name: normalizeName(el.textContent) }))
           .filter(p => p.name && !seen.has(p.name));
 
@@ -300,20 +319,10 @@ async function scrapeTournament(browser, url) {
     }
 
     // ── Pass 2: global sweep ─────────────────────────────────────────────────
-    // Runs UNCONDITIONALLY — not just when Pass 1 found nothing.
-    //
-    // The original code only ran the fallback when participants.length === 0,
-    // meaning any player whose <span class="playername"> sat outside every
-    // [data-rank-start] container (e.g. Cheery Dog) was silently dropped the
-    // moment at least one ranked player was found.
-    //
-    // Running both passes and deduplicating via `seen` ensures every
-    // span.playername on the page is captured regardless of DOM position.
-    findAll('span.playername').forEach(el => {
+    findAll(playerSelector).forEach(el => {
       const name = normalizeName(el.textContent);
       if (!name || seen.has(name)) return;
       seen.add(name);
-      // rank is null because we have no container-level rank data for them
       participants.push({
         rank:   null,
         name,
