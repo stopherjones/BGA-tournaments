@@ -1,0 +1,72 @@
+{
+  "config": {
+    "notify_email": "your@email.com"
+  },
+  "tournaments": [
+    {
+      "id": "528478",
+      "url": "https://boardgamearena.com/tournament?id=528478",
+      "last_status": "in_progress",
+      "last_checked": "2026-05-27T12:35:56.214Z",
+      "status": "finished",
+      "participants": [
+        {
+          "rank": 1,
+          "name": "Castz",
+          "active": true
+        },
+        {
+          "rank": 2,
+          "name": "Cheery Dog",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "Niall",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "CabbageOfKastis",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "stopherjones",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Bleedingriver",
+          "active": false
+        }
+      ],
+      "game_name": "Tigris and Euphrates",
+      "title": "TBA Around the World"
+    }  ]
+}
