@@ -67,7 +67,7 @@
       ],
       "game_name": "Tigris and Euphrates",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:15:46.114Z"
+      "last_checked": "2026-05-30T04:54:28.890Z"
     },
     {
       "id": "528477",
@@ -133,7 +133,7 @@
       ],
       "game_name": "Assyria",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:15:52.591Z"
+      "last_checked": "2026-05-30T04:54:34.985Z"
     },
     {
       "id": "554870",
@@ -154,7 +154,7 @@
         {
           "rank": null,
           "name": "drharris",
-          "active": true
+          "active": false
         },
         {
           "rank": null,
@@ -199,7 +199,7 @@
       ],
       "game_name": "Jaipur",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:15:58.979Z"
+      "last_checked": "2026-05-30T04:54:41.135Z"
     },
     {
       "id": "554868",
@@ -280,7 +280,7 @@
       ],
       "game_name": "Go Goa",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:16:05.142Z"
+      "last_checked": "2026-05-30T04:54:47.251Z"
     },
     {
       "id": "538858",
@@ -346,7 +346,7 @@
       ],
       "game_name": "K2 - Pakistan",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:16:11.395Z"
+      "last_checked": "2026-05-30T04:54:53.352Z"
     },
     {
       "id": "538885",
@@ -412,7 +412,7 @@
       ],
       "game_name": "Nanga Parbat",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:16:18.361Z"
+      "last_checked": "2026-05-30T04:55:00.016Z"
     },
     {
       "id": "538888",
@@ -488,7 +488,7 @@
       ],
       "game_name": "Trek12",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:16:24.777Z"
+      "last_checked": "2026-05-30T04:55:06.081Z"
     },
     {
       "id": "511982",
@@ -569,7 +569,7 @@
       ],
       "game_name": "Neom",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:16:31.036Z"
+      "last_checked": "2026-05-30T04:55:12.153Z"
     },
     {
       "id": "528687",
@@ -625,7 +625,7 @@
       ],
       "game_name": "Khiva",
       "title": "TBA Around the World",
-      "last_checked": "2026-05-29T05:16:37.431Z"
+      "last_checked": "2026-05-30T04:55:18.228Z"
     },
     {
       "id": "518587",
@@ -711,7 +711,7 @@
       ],
       "game_name": "Kingdomino",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:16:43.837Z"
+      "last_checked": "2026-05-30T04:55:24.340Z"
     },
     {
       "id": "518549",
@@ -792,7 +792,7 @@
       ],
       "game_name": "Formula D",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:16:49.954Z"
+      "last_checked": "2026-05-30T04:55:30.582Z"
     },
     {
       "id": "518574",
@@ -883,7 +883,7 @@
       ],
       "game_name": "Jaipur",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:16:56.757Z"
+      "last_checked": "2026-05-30T04:55:37.429Z"
     },
     {
       "id": "518581",
@@ -969,7 +969,7 @@
       ],
       "game_name": "Golf",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:17:03.687Z"
+      "last_checked": "2026-05-30T04:55:44.095Z"
     },
     {
       "id": "518544",
@@ -1060,7 +1060,7 @@
       ],
       "game_name": "Cities",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:17:09.938Z"
+      "last_checked": "2026-05-30T04:55:50.285Z"
     },
     {
       "id": "518569",
@@ -1151,7 +1151,7 @@
       ],
       "game_name": "Number Drop",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:17:16.337Z"
+      "last_checked": "2026-05-30T04:55:56.370Z"
     },
     {
       "id": "518571",
@@ -1247,7 +1247,7 @@
       ],
       "game_name": "Setup",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:17:22.724Z"
+      "last_checked": "2026-05-30T04:56:02.680Z"
     },
     {
       "id": "518584",
@@ -1328,7 +1328,7 @@
       ],
       "game_name": "Bubble Pop",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:17:29.553Z"
+      "last_checked": "2026-05-30T04:56:09.546Z"
     },
     {
       "id": "518551",
@@ -1424,7 +1424,7 @@
       ],
       "game_name": "Sushi Go",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:17:35.832Z"
+      "last_checked": "2026-05-30T04:56:15.706Z"
     },
     {
       "id": "518577",
@@ -1510,7 +1510,7 @@
       ],
       "game_name": "Draftosaurus",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-05-29T05:17:42.286Z"
+      "last_checked": "2026-05-30T04:56:21.767Z"
     },
     {
       "id": "545598",
@@ -1556,7 +1556,7 @@
       ],
       "game_name": "Round 5 Memoir 44",
       "title": "TBA Fight Club",
-      "last_checked": "2026-05-29T05:17:49.072Z"
+      "last_checked": "2026-05-30T04:56:28.604Z"
     },
     {
       "id": "520692",
@@ -1592,7 +1592,7 @@
       ],
       "game_name": "King of Tokyo",
       "title": "TBA Fight Club",
-      "last_checked": "2026-05-29T05:17:55.374Z"
+      "last_checked": "2026-05-30T04:56:34.850Z"
     },
     {
       "id": "519247",
@@ -1623,7 +1623,7 @@
       ],
       "game_name": "Logger",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-05-29T05:18:01.766Z"
+      "last_checked": "2026-05-30T04:56:40.959Z"
     },
     {
       "id": "519246",
@@ -1654,7 +1654,7 @@
       ],
       "game_name": "China Gold",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-05-29T05:18:08.054Z"
+      "last_checked": "2026-05-30T04:56:47.053Z"
     },
     {
       "id": "519245",
@@ -1685,7 +1685,7 @@
       ],
       "game_name": "Pylos",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-05-29T05:18:14.262Z"
+      "last_checked": "2026-05-30T04:56:53.189Z"
     },
     {
       "id": "519244",
@@ -1721,7 +1721,7 @@
       ],
       "game_name": "Cephalopod",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-05-29T05:18:20.656Z"
+      "last_checked": "2026-05-30T04:56:59.399Z"
     },
     {
       "id": "560721",
@@ -1762,7 +1762,7 @@
       ],
       "game_name": "Flowers",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-05-29T05:18:26.747Z"
+      "last_checked": "2026-05-30T04:57:05.644Z"
     },
     {
       "id": "560720",
@@ -1770,6 +1770,11 @@
       "last_status": null,
       "status": "in_progress",
       "participants": [
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
         {
           "rank": null,
           "name": "Datin",
@@ -1792,18 +1797,13 @@
         },
         {
           "rank": null,
-          "name": "drharris",
-          "active": true
-        },
-        {
-          "rank": null,
           "name": "Kurorac",
           "active": true
         }
       ],
       "game_name": "Bug game",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-05-29T05:18:33.679Z"
+      "last_checked": "2026-05-30T04:57:11.816Z"
     },
     {
       "id": "560719",
@@ -1844,7 +1844,7 @@
       ],
       "game_name": "Finity",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-05-29T05:18:39.798Z"
+      "last_checked": "2026-05-30T04:57:17.918Z"
     },
     {
       "id": "560718",
@@ -1890,7 +1890,7 @@
       ],
       "game_name": "Abalone",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-05-29T05:18:46.098Z"
+      "last_checked": "2026-05-30T04:57:24.196Z"
     },
     {
       "id": "560717",
@@ -1936,7 +1936,7 @@
       ],
       "game_name": "Circle of Life",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-05-29T05:18:52.340Z"
+      "last_checked": "2026-05-30T04:57:30.296Z"
     },
     {
       "id": "560716",
@@ -1977,7 +1977,7 @@
       ],
       "game_name": "Bobail",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-05-29T05:18:58.638Z"
+      "last_checked": "2026-05-30T04:57:36.530Z"
     },
     {
       "id": "560715",
@@ -2018,7 +2018,7 @@
       ],
       "game_name": "Strands",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-05-29T05:19:04.883Z"
+      "last_checked": "2026-05-30T04:57:42.794Z"
     }
   ]
 }
