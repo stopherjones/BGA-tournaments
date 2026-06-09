@@ -1806,47 +1806,6 @@
       "last_checked": "2026-06-09T12:09:05.152Z"
     },
     {
-      "id": "560719",
-      "url": "https://boardgamearena.com/tournament?id=560719",
-      "last_status": "in_progress",
-      "status": "finished",
-      "participants": [
-        {
-          "rank": 1,
-          "name": "Salvidrim",
-          "active": true
-        },
-        {
-          "rank": 2,
-          "name": "Datin",
-          "active": false
-        },
-        {
-          "rank": 2,
-          "name": "Kurorac",
-          "active": false
-        },
-        {
-          "rank": 2,
-          "name": "Zozoken",
-          "active": false
-        },
-        {
-          "rank": 2,
-          "name": "drharris",
-          "active": false
-        },
-        {
-          "rank": 2,
-          "name": "stopherjones",
-          "active": false
-        }
-      ],
-      "game_name": "Finity",
-      "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:09:10.831Z"
-    },
-    {
       "id": "560718",
       "url": "https://boardgamearena.com/tournament?id=560718",
       "last_status": null,
