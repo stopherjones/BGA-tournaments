@@ -67,7 +67,7 @@
       ],
       "game_name": "Tigris and Euphrates",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:06:33.024Z"
+      "last_checked": "2026-06-11T05:51:53.677Z"
     },
     {
       "id": "528477",
@@ -133,7 +133,7 @@
       ],
       "game_name": "Assyria",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:06:39.112Z"
+      "last_checked": "2026-06-11T05:51:59.486Z"
     },
     {
       "id": "554870",
@@ -174,7 +174,7 @@
         {
           "rank": null,
           "name": "Salvidrim",
-          "active": true
+          "active": false
         },
         {
           "rank": null,
@@ -199,7 +199,7 @@
       ],
       "game_name": "Jaipur",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:06:44.751Z"
+      "last_checked": "2026-06-11T05:52:05.071Z"
     },
     {
       "id": "554868",
@@ -280,7 +280,7 @@
       ],
       "game_name": "Go Goa",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:06:50.392Z"
+      "last_checked": "2026-06-11T05:52:10.880Z"
     },
     {
       "id": "538858",
@@ -346,7 +346,7 @@
       ],
       "game_name": "K2 - Pakistan",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:06:56.197Z"
+      "last_checked": "2026-06-11T05:52:16.692Z"
     },
     {
       "id": "538885",
@@ -412,7 +412,7 @@
       ],
       "game_name": "Nanga Parbat",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:07:02.593Z"
+      "last_checked": "2026-06-11T05:52:22.968Z"
     },
     {
       "id": "538888",
@@ -488,7 +488,7 @@
       ],
       "game_name": "Trek12",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:07:08.214Z"
+      "last_checked": "2026-06-11T05:52:28.632Z"
     },
     {
       "id": "511982",
@@ -569,7 +569,7 @@
       ],
       "game_name": "Neom",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:07:13.832Z"
+      "last_checked": "2026-06-11T05:52:34.320Z"
     },
     {
       "id": "528687",
@@ -625,7 +625,7 @@
       ],
       "game_name": "Khiva",
       "title": "TBA Around the World",
-      "last_checked": "2026-06-09T12:07:19.465Z"
+      "last_checked": "2026-06-11T05:52:39.978Z"
     },
     {
       "id": "518587",
@@ -711,7 +711,7 @@
       ],
       "game_name": "Kingdomino",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:07:25.277Z"
+      "last_checked": "2026-06-11T05:52:45.622Z"
     },
     {
       "id": "518549",
@@ -792,7 +792,7 @@
       ],
       "game_name": "Formula D",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:07:31.074Z"
+      "last_checked": "2026-06-11T05:52:51.426Z"
     },
     {
       "id": "518574",
@@ -883,93 +883,93 @@
       ],
       "game_name": "Jaipur",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:07:37.519Z"
+      "last_checked": "2026-06-11T05:52:57.834Z"
     },
     {
       "id": "518581",
       "url": "https://boardgamearena.com/tournament?id=518581",
-      "last_status": null,
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "status": "finished",
       "participants": [
         {
-          "rank": null,
-          "name": "TacCOIG",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "GeraldineMerida",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Arjo14",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Bleedingriver",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Cheery Dog",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Kurorac",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Salvidrim",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "drharris",
-          "active": false
-        },
-        {
-          "rank": null,
+          "rank": 1,
           "name": "LaurieW917",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 2,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": 3,
           "name": "rakkamar",
           "active": true
         },
         {
-          "rank": null,
-          "name": "Sharon F",
-          "active": false
+          "rank": 3,
+          "name": "GeraldineMerida",
+          "active": true
         },
         {
-          "rank": null,
-          "name": "VemRD",
-          "active": false
-        },
-        {
-          "rank": null,
+          "rank": 5,
           "name": "Zozoken",
           "active": false
         },
         {
-          "rank": null,
+          "rank": 5,
+          "name": "Cheery Dog",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "stopherjones",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Arjo14",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Sharon F",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Salvidrim",
+          "active": false
+        },
+        {
+          "rank": 5,
           "name": "daniinnc",
           "active": false
         },
         {
-          "rank": null,
-          "name": "stopherjones",
+          "rank": 5,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Bleedingriver",
+          "active": false
+        },
+        {
+          "rank": 5,
+          "name": "Kurorac",
           "active": false
         }
       ],
       "game_name": "Golf",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:07:43.949Z"
+      "last_checked": "2026-06-11T05:53:04.152Z"
     },
     {
       "id": "518544",
@@ -1060,7 +1060,7 @@
       ],
       "game_name": "Cities",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:07:49.565Z"
+      "last_checked": "2026-06-11T05:53:09.771Z"
     },
     {
       "id": "518569",
@@ -1151,7 +1151,7 @@
       ],
       "game_name": "Number Drop",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:07:55.330Z"
+      "last_checked": "2026-06-11T05:53:15.513Z"
     },
     {
       "id": "518571",
@@ -1247,7 +1247,7 @@
       ],
       "game_name": "Setup",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:08:00.999Z"
+      "last_checked": "2026-06-11T05:53:21.136Z"
     },
     {
       "id": "518584",
@@ -1328,7 +1328,7 @@
       ],
       "game_name": "Bubble Pop",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:08:07.454Z"
+      "last_checked": "2026-06-11T05:53:27.615Z"
     },
     {
       "id": "518551",
@@ -1424,7 +1424,7 @@
       ],
       "game_name": "Sushi Go",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:08:13.170Z"
+      "last_checked": "2026-06-11T05:53:33.251Z"
     },
     {
       "id": "518577",
@@ -1510,7 +1510,7 @@
       ],
       "game_name": "Draftosaurus",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-06-09T12:08:18.943Z"
+      "last_checked": "2026-06-11T05:53:38.865Z"
     },
     {
       "id": "545598",
@@ -1556,7 +1556,7 @@
       ],
       "game_name": "Round 5 Memoir 44",
       "title": "TBA Fight Club",
-      "last_checked": "2026-06-09T12:08:25.322Z"
+      "last_checked": "2026-06-11T05:53:45.294Z"
     },
     {
       "id": "520692",
@@ -1592,7 +1592,7 @@
       ],
       "game_name": "King of Tokyo",
       "title": "TBA Fight Club",
-      "last_checked": "2026-06-09T12:08:31.117Z"
+      "last_checked": "2026-06-11T05:53:50.959Z"
     },
     {
       "id": "519247",
@@ -1623,7 +1623,7 @@
       ],
       "game_name": "Logger",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-06-09T12:08:36.878Z"
+      "last_checked": "2026-06-11T05:53:56.578Z"
     },
     {
       "id": "519246",
@@ -1654,7 +1654,7 @@
       ],
       "game_name": "China Gold",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-06-09T12:08:42.478Z"
+      "last_checked": "2026-06-11T05:54:02.221Z"
     },
     {
       "id": "519245",
@@ -1685,7 +1685,7 @@
       ],
       "game_name": "Pylos",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-06-09T12:08:48.139Z"
+      "last_checked": "2026-06-11T05:54:07.892Z"
     },
     {
       "id": "519244",
@@ -1721,7 +1721,7 @@
       ],
       "game_name": "Cephalopod",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-06-09T12:08:53.771Z"
+      "last_checked": "2026-06-11T05:54:13.535Z"
     },
     {
       "id": "560721",
@@ -1762,7 +1762,7 @@
       ],
       "game_name": "Flowers",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:08:59.412Z"
+      "last_checked": "2026-06-11T05:54:19.272Z"
     },
     {
       "id": "560720",
@@ -1803,7 +1803,7 @@
       ],
       "game_name": "Bug game",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:09:05.152Z"
+      "last_checked": "2026-06-11T05:54:24.936Z"
     },
     {
       "id": "560718",
@@ -1813,7 +1813,17 @@
       "participants": [
         {
           "rank": null,
+          "name": "Kurorac",
+          "active": true
+        },
+        {
+          "rank": null,
           "name": "Arjo14",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "drharris",
           "active": true
         },
         {
@@ -1835,21 +1845,11 @@
           "rank": null,
           "name": "Salvidrim",
           "active": true
-        },
-        {
-          "rank": null,
-          "name": "drharris",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Kurorac",
-          "active": true
         }
       ],
       "game_name": "Abalone",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:09:16.490Z"
+      "last_checked": "2026-06-11T05:54:30.548Z"
     },
     {
       "id": "560717",
@@ -1895,7 +1895,7 @@
       ],
       "game_name": "Circle of Life",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:09:22.272Z"
+      "last_checked": "2026-06-11T05:54:36.190Z"
     },
     {
       "id": "560716",
@@ -1903,6 +1903,11 @@
       "last_status": null,
       "status": "in_progress",
       "participants": [
+        {
+          "rank": null,
+          "name": "drharris",
+          "active": true
+        },
         {
           "rank": null,
           "name": "Salvidrim",
@@ -1925,18 +1930,13 @@
         },
         {
           "rank": null,
-          "name": "drharris",
-          "active": true
-        },
-        {
-          "rank": null,
           "name": "stopherjones",
           "active": true
         }
       ],
       "game_name": "Bobail",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:09:27.856Z"
+      "last_checked": "2026-06-11T05:54:41.835Z"
     },
     {
       "id": "560715",
@@ -1977,7 +1977,7 @@
       ],
       "game_name": "Strands",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:09:33.447Z"
+      "last_checked": "2026-06-11T05:54:47.592Z"
     },
     {
       "id": "570532",
@@ -1993,6 +1993,11 @@
         {
           "rank": null,
           "name": "drharris",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Kurorac",
           "active": true
         },
         {
@@ -2013,7 +2018,7 @@
       ],
       "game_name": "Finity v2",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-06-09T12:09:39.813Z"
+      "last_checked": "2026-06-11T05:54:53.820Z"
     }
   ]
 }
