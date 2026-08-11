@@ -67,7 +67,7 @@
       ],
       "game_name": "Tigris and Euphrates",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:47:35.420Z"
+      "last_checked": "2026-08-11T13:26:39.594Z"
     },
     {
       "id": "528477",
@@ -133,7 +133,7 @@
       ],
       "game_name": "Assyria",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:47:41.700Z"
+      "last_checked": "2026-08-11T13:26:46.491Z"
     },
     {
       "id": "554870",
@@ -199,88 +199,88 @@
       ],
       "game_name": "Jaipur",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:47:48.010Z"
+      "last_checked": "2026-08-11T13:26:53.175Z"
     },
     {
       "id": "554868",
       "url": "https://boardgamearena.com/tournament?id=554868",
-      "last_status": null,
-      "status": "in_progress",
+      "last_status": "in_progress",
+      "status": "finished",
       "participants": [
         {
-          "rank": null,
-          "name": "ren v hoek",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "drharris",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Arjo14",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Cheery Dog",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Silene",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "stopherjones",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "VemRD",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Kurorac",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "TacCOIG",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "Zozoken",
-          "active": true
-        },
-        {
-          "rank": null,
-          "name": "havensand",
-          "active": false
-        },
-        {
-          "rank": null,
-          "name": "Salvidrim",
-          "active": true
-        },
-        {
-          "rank": null,
+          "rank": 1,
           "name": "Niall",
           "active": true
         },
         {
-          "rank": null,
+          "rank": 2,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": 3,
+          "name": "Salvidrim",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "TacCOIG",
+          "active": false
+        },
+        {
+          "rank": 4,
+          "name": "Silene",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "drharris",
+          "active": false
+        },
+        {
+          "rank": 6,
+          "name": "ren v hoek",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "Arjo14",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "VemRD",
+          "active": false
+        },
+        {
+          "rank": 7,
           "name": "daniinnc",
+          "active": false
+        },
+        {
+          "rank": 7,
+          "name": "havensand",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Cheery Dog",
+          "active": false
+        },
+        {
+          "rank": 8,
+          "name": "Kurorac",
+          "active": false
+        },
+        {
+          "rank": 10,
+          "name": "Zozoken",
           "active": false
         }
       ],
       "game_name": "Go Goa",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:47:54.156Z"
+      "last_checked": "2026-08-11T13:26:58.265Z"
     },
     {
       "id": "538858",
@@ -346,7 +346,7 @@
       ],
       "game_name": "K2 - Pakistan",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:48:00.469Z"
+      "last_checked": "2026-08-11T13:27:05.173Z"
     },
     {
       "id": "538885",
@@ -412,7 +412,7 @@
       ],
       "game_name": "Nanga Parbat",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:48:07.371Z"
+      "last_checked": "2026-08-11T13:27:12.792Z"
     },
     {
       "id": "538888",
@@ -488,7 +488,7 @@
       ],
       "game_name": "Trek12",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:48:13.659Z"
+      "last_checked": "2026-08-11T13:27:17.762Z"
     },
     {
       "id": "511982",
@@ -569,7 +569,7 @@
       ],
       "game_name": "Neom",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:48:19.804Z"
+      "last_checked": "2026-08-11T13:27:24.668Z"
     },
     {
       "id": "528687",
@@ -625,7 +625,7 @@
       ],
       "game_name": "Khiva",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:48:25.988Z"
+      "last_checked": "2026-08-11T13:27:31.246Z"
     },
     {
       "id": "518587",
@@ -711,7 +711,7 @@
       ],
       "game_name": "Kingdomino",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:48:32.110Z"
+      "last_checked": "2026-08-11T13:27:38.159Z"
     },
     {
       "id": "518549",
@@ -792,7 +792,7 @@
       ],
       "game_name": "Formula D",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:48:38.256Z"
+      "last_checked": "2026-08-11T13:27:43.222Z"
     },
     {
       "id": "518574",
@@ -883,7 +883,7 @@
       ],
       "game_name": "Jaipur",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:48:46.111Z"
+      "last_checked": "2026-08-11T13:27:48.171Z"
     },
     {
       "id": "518581",
@@ -969,7 +969,7 @@
       ],
       "game_name": "Golf",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:48:53.072Z"
+      "last_checked": "2026-08-11T13:27:55.822Z"
     },
     {
       "id": "518544",
@@ -1060,7 +1060,7 @@
       ],
       "game_name": "Cities",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:48:59.069Z"
+      "last_checked": "2026-08-11T13:28:02.531Z"
     },
     {
       "id": "518569",
@@ -1151,7 +1151,7 @@
       ],
       "game_name": "Number Drop",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:49:05.255Z"
+      "last_checked": "2026-08-11T13:28:09.434Z"
     },
     {
       "id": "518571",
@@ -1247,7 +1247,7 @@
       ],
       "game_name": "Setup",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:49:11.448Z"
+      "last_checked": "2026-08-11T13:28:16.168Z"
     },
     {
       "id": "518584",
@@ -1328,7 +1328,7 @@
       ],
       "game_name": "Bubble Pop",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:49:18.354Z"
+      "last_checked": "2026-08-11T13:28:23.777Z"
     },
     {
       "id": "518551",
@@ -1424,7 +1424,7 @@
       ],
       "game_name": "Sushi Go",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:49:24.513Z"
+      "last_checked": "2026-08-11T13:28:30.608Z"
     },
     {
       "id": "518577",
@@ -1510,7 +1510,7 @@
       ],
       "game_name": "Draftosaurus",
       "title": "TBA Seasonal 2026-1",
-      "last_checked": "2026-08-11T09:49:30.946Z"
+      "last_checked": "2026-08-11T13:28:35.699Z"
     },
     {
       "id": "545598",
@@ -1556,7 +1556,7 @@
       ],
       "game_name": "Round 5 Memoir 44",
       "title": "TBA Fight Club",
-      "last_checked": "2026-08-11T09:49:37.738Z"
+      "last_checked": "2026-08-11T13:28:42.889Z"
     },
     {
       "id": "520692",
@@ -1592,7 +1592,7 @@
       ],
       "game_name": "King of Tokyo",
       "title": "TBA Fight Club",
-      "last_checked": "2026-08-11T09:49:44.051Z"
+      "last_checked": "2026-08-11T13:28:47.997Z"
     },
     {
       "id": "519247",
@@ -1623,7 +1623,7 @@
       ],
       "game_name": "Logger",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-08-11T09:49:50.317Z"
+      "last_checked": "2026-08-11T13:28:52.990Z"
     },
     {
       "id": "519246",
@@ -1654,7 +1654,7 @@
       ],
       "game_name": "China Gold",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-08-11T09:49:56.402Z"
+      "last_checked": "2026-08-11T13:28:59.842Z"
     },
     {
       "id": "519245",
@@ -1685,7 +1685,7 @@
       ],
       "game_name": "Pylos",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-08-11T09:50:02.804Z"
+      "last_checked": "2026-08-11T13:29:04.773Z"
     },
     {
       "id": "519244",
@@ -1721,7 +1721,7 @@
       ],
       "game_name": "Cephalopod",
       "title": "TBA Abstract Games Club S5",
-      "last_checked": "2026-08-11T09:50:08.942Z"
+      "last_checked": "2026-08-11T13:29:09.871Z"
     },
     {
       "id": "560721",
@@ -1762,7 +1762,7 @@
       ],
       "game_name": "Flowers",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-08-11T09:50:15.502Z"
+      "last_checked": "2026-08-11T13:29:14.780Z"
     },
     {
       "id": "560720",
@@ -1803,7 +1803,7 @@
       ],
       "game_name": "Bug game",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-08-11T09:50:21.745Z"
+      "last_checked": "2026-08-11T13:29:19.678Z"
     },
     {
       "id": "560718",
@@ -1849,7 +1849,7 @@
       ],
       "game_name": "Abalone",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-08-11T09:50:28.014Z"
+      "last_checked": "2026-08-11T13:29:26.559Z"
     },
     {
       "id": "560717",
@@ -1895,7 +1895,7 @@
       ],
       "game_name": "Circle of Life",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-08-11T09:50:34.217Z"
+      "last_checked": "2026-08-11T13:29:31.578Z"
     },
     {
       "id": "560716",
@@ -1936,7 +1936,7 @@
       ],
       "game_name": "Bobail",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-08-11T09:50:40.369Z"
+      "last_checked": "2026-08-11T13:29:38.445Z"
     },
     {
       "id": "560715",
@@ -1977,7 +1977,7 @@
       ],
       "game_name": "Strands",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-08-11T09:50:46.607Z"
+      "last_checked": "2026-08-11T13:29:43.479Z"
     },
     {
       "id": "570532",
@@ -2018,7 +2018,7 @@
       ],
       "game_name": "Finity v2",
       "title": "TBA Abstract Games Club S6",
-      "last_checked": "2026-08-11T09:50:53.499Z"
+      "last_checked": "2026-08-11T13:29:51.006Z"
     },
     {
       "id": "571136",
@@ -2079,7 +2079,7 @@
       ],
       "game_name": "Roll to the Top",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:50:59.597Z"
+      "last_checked": "2026-08-11T13:29:57.658Z"
     },
     {
       "id": "558711",
@@ -2155,7 +2155,7 @@
       ],
       "game_name": "Takenoko",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:51:05.764Z"
+      "last_checked": "2026-08-11T13:30:04.555Z"
     },
     {
       "id": "558713",
@@ -2221,7 +2221,7 @@
       ],
       "game_name": "In the Year of the Dragon",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:51:11.898Z"
+      "last_checked": "2026-08-11T13:30:11.379Z"
     },
     {
       "id": "566869",
@@ -2272,7 +2272,164 @@
       ],
       "game_name": "Fai Fo",
       "title": "TBA Around the World",
-      "last_checked": "2026-08-11T09:51:18.149Z"
+      "last_checked": "2026-08-11T13:30:16.467Z"
+    },
+    {
+      "id": "590670",
+      "url": "https://boardgamearena.com/tournament?id=590670",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        }
+      ],
+      "game_name": "Hutan",
+      "title": "TBA Around the World",
+      "last_checked": "2026-08-11T13:30:23.308Z"
+    },
+    {
+      "id": "590694",
+      "url": "https://boardgamearena.com/tournament?id=590694",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        }
+      ],
+      "game_name": "King of Tokyo",
+      "title": "TBA Around the World",
+      "last_checked": "2026-08-11T13:30:28.366Z"
+    },
+    {
+      "id": "590696",
+      "url": "https://boardgamearena.com/tournament?id=590696",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        }
+      ],
+      "game_name": "Lets go to Japan",
+      "title": "TBA Around the World",
+      "last_checked": "2026-08-11T13:30:33.453Z"
+    },
+    {
+      "id": "590697",
+      "url": "https://boardgamearena.com/tournament?id=590697",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        }
+      ],
+      "game_name": "The White Castle",
+      "title": "TBA Around the World",
+      "last_checked": "2026-08-11T13:30:40.184Z"
+    },
+    {
+      "id": "590698",
+      "url": "https://boardgamearena.com/tournament?id=590698",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        }
+      ],
+      "game_name": "Kokeshi",
+      "title": "TBA Around the World",
+      "last_checked": "2026-08-11T13:30:46.950Z"
+    },
+    {
+      "id": "590700",
+      "url": "https://boardgamearena.com/tournament?id=590700",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "Salvidrim",
+          "active": true
+        }
+      ],
+      "game_name": "Boomerang Australia",
+      "title": "TBA Around the World",
+      "last_checked": "2026-08-11T13:30:53.800Z"
+    },
+    {
+      "id": "590701",
+      "url": "https://boardgamearena.com/tournament?id=590701",
+      "last_status": null,
+      "status": "planned",
+      "participants": [
+        {
+          "rank": null,
+          "name": "stopherjones",
+          "active": true
+        },
+        {
+          "rank": null,
+          "name": "TacCOIG",
+          "active": true
+        }
+      ],
+      "game_name": "Dingos Dreams",
+      "title": "TBA Around the World",
+      "last_checked": "2026-08-11T13:31:00.554Z"
     }
   ]
 }
