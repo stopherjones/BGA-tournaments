@@ -47,6 +47,9 @@ const STATUS_LABEL = {
   console.log('Browser launched');
 
   for (const tournament of data.tournaments) {
+    if (tournament.status === 'finished') {
+      continue;
+    }
     const displayName = tournament.game_name || tournament.title || `Tournament ${tournament.id}`;
     console.log(`\n── Checking: ${displayName} (id ${tournament.id})`);
     try {
