@@ -377,7 +377,9 @@
     let currentTitle = '';
 
     // ── Fetch data ──────────────────────────────────────────────────────────────
-    fetch('data/tournaments.json?_=' + Date.now())
+    const GIST_RAW_URL = 'https://gist.githubusercontent.com/stopherjones/9e76e51ec3edc32616434a96fbb76d27/raw/tournaments.json';
+
+    fetch(GIST_RAW_URL + '?_=' + Date.now())
       .then(r => r.json())
       .then(data => {
         allTournaments = data.tournaments;
@@ -386,7 +388,7 @@
       })
       .catch(err => {
         document.getElementById('cards').innerHTML =
-          `<div class="empty">⚠️ Could not load tournament data.<br><small>${err.message}</small></div>`;
+      `   <div class="empty">⚠️ Could not load tournament data.<br><small>${err.message}</small></div>`;
       });
 
     // ── Render ──────────────────────────────────────────────────────────────────
